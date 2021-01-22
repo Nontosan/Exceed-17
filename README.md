@@ -10,6 +10,14 @@ The money system is the new thing in the Exceed Camp, and it's not an easy thing
 
 We use Flask for the backend part and ordinary HTML CSS and JavaScript for the frontend.
 
+## How to set up the project?
+
+First, You need to install **python** on your computer from [this link](https://www.python.org/downloads/). Then you should check your python that is installed correctly by typing `python --version` to your terminal. It should show the version of python on your terminal.
+
+After that, You need to install **flask** to the python by type `python -m pip install flask` to your terminal. You can check if the library is installed correctly by type `python` to run the python shell, then type `import flask`. It should not show anything.
+
+Last, You need to install **pymongo** to the python by type `python -m pip install pymongo` to your terminal. You can check the installation by import the library to python as the same as **flask**.
+
 ## Licence
 
 [MIT](https://choosealicense.com/licenses/mit/) Copyright (c) 2021 CPSK Club
