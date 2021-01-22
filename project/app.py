@@ -11,22 +11,22 @@ def home():
 
 @app.route("/login", methods=["POST", "GET"])
 def login():
-    return "login"
+    return render_template("login.html", login=True)
 
 
 @app.route("/balance", methods=["PUT", "GET"])
 def balance():
-    return "balance"
+    return render_template("balance.html", balance=True)
 
 
 @app.route("/lib-store", methods=["PUT", "GET"])
 def lib_store():
-    return "lib. store"
+    return render_template("lib-store.html", lib_store=True)
 
 
 @app.route("/price-cal")
 def price_cal():
-    return "price cal."
+    return render_template("price-cal.html", preice_cal=True)
 
 
 if __name__ == "__main__":

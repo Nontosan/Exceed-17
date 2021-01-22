@@ -8,6 +8,50 @@
       crossorigin="anonymous"
     />
     <title>{% block title %}{% endblock %}</title>
+    <!-- NavBar -->
+    <nav class="navbar navbar-dark", style="background-color: black;">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#"><img src="./static/Black.png" style="width: 7vh;"></a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <hr style="color: white;">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              {% if login %}
+              <a class="nav-link disabled" aria-current="page" href="/login">Login</a>
+              {% else %}
+              <a class="nav-link active" aria-current="page" href="/login">Login</a>
+              {% endif %}
+            </li>
+            <li class="nav-item">
+              {% if balance %}
+              <a class="nav-link disabled" aria-current="page" href="/balance">Balance</a>
+              {% else %}
+              <a class="nav-link active" aria-current="page" href="/balance">Balance</a>
+              {% endif %}
+            </li>
+            <li class="nav-item">
+              {% if lib_store %}
+              <a class="nav-link disabled" aria-current="page" href="/lib-store">Library Store</a>
+              {% else %}
+              <a class="nav-link active" aria-current="page" href="/lib-store">Library Store</a>
+              {% endif %}
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- ====== -->
     {% block content_head %}{% endblock %}
   </head>
   <body>
