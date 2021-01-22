@@ -22,6 +22,10 @@ Last, You need to install **pymongo** to the python by type `python -m pip insta
 
 All you need is to run the `app.py` by type `python ./project/app.py` if you are outside the project folder. Or you can type `python app.py` if you in the project folder.
 
+## Track Us!
+
+[Trello](https://trello.com/b/evaFkmXy)
+
 ## Licence
 
 [MIT](https://choosealicense.com/licenses/mit/) Copyright (c) 2021 CPSK Club
