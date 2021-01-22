@@ -18,6 +18,10 @@ After that, You need to install **flask** to the python by type `python -m pip i
 
 Last, You need to install **pymongo** to the python by type `python -m pip install pymongo` to your terminal. You can check the installation by import the library to python as the same as **flask**.
 
+## How to run the project?
+
+All you need is to run the `app.py` by type `python ./project/app.py` if you are outside the project folder. Or you can type `python app.py` if you in the project folder.
+
 ## Licence
 
 [MIT](https://choosealicense.com/licenses/mit/) Copyright (c) 2021 CPSK Club
