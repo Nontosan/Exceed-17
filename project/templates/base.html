@@ -47,33 +47,33 @@
             <li class="nav-item">
               {% if login %}
               <a class="nav-link disabled" aria-current="page" href="/login"
-                >Login</a
+                ><p>Login</p></a
               >
               {% else %}
               <a class="nav-link active" aria-current="page" href="/login"
-                >Login</a
+                ><p>Login</p></a
               >
               {% endif %}
             </li>
             <li class="nav-item">
               {% if balance %}
               <a class="nav-link disabled" aria-current="page" href="/balance"
-                >Balance</a
+                ><p>Balance</p></a
               >
               {% else %}
               <a class="nav-link active" aria-current="page" href="/balance"
-                >Balance</a
+                ><p>Balance</p></a
               >
               {% endif %}
             </li>
             <li class="nav-item">
               {% if lib_store %}
               <a class="nav-link disabled" aria-current="page" href="/lib-store"
-                >Library Store</a
+                ><p>Library Store</p></a
               >
               {% else %}
               <a class="nav-link active" aria-current="page" href="/lib-store"
-                >Library Store</a
+                ><p>Library Store</p></a
               >
               {% endif %}
             </li>
@@ -119,7 +119,8 @@
       });
     });
 
-    if ($(".smart-scroll").length > 0) { // make navbar automatic hide when scroll down and show back when scroll up
+    if ($(".smart-scroll").length > 0) {
+      // make navbar automatic hide when scroll down and show back when scroll up
       var last_scroll_top = 0;
       $(window).on("scroll", function () {
         scroll_top = $(this).scrollTop();
@@ -136,7 +137,8 @@
       });
     }
 
-    if ($("#btt").length > 0) { // hide btt button when scroll down and show back when scroll up
+    if ($("#btt").length > 0) {
+      // hide btt button when scroll down and show back when scroll up
       var last_scroll_top_invt = 0;
       $(window).on("scroll", function () {
         scroll_top_invt = $(this).scrollTop();
@@ -149,7 +151,20 @@
       });
     }
   </script>
+  {% block script %} {% endblock %}
   <style>
+    @font-face {
+      font-family: SaveSpace;
+      src: url("./static/Font/FC SaveSpace Rounded Regular.ttf") format("truetype");
+    }
+    p {
+      font-family: SaveSpace;
+      font-size: 2.5rem;
+    }
+    h1 {
+      font-family: SaveSpace;
+      font-size: 4rem;
+    }
     .smart-scroll {
       position: fixed;
       top: 0;
@@ -178,7 +193,7 @@
       -ms-transition: opacity 0.5s ease-in-out;
       -o-transition: opacity 0.5s ease-in-out;
       transition: opacity 0.5s ease-in-out;
-      opacity: 0!important;
+      opacity: 0 !important;
     }
     .fadein {
       -webkit-transition: opacity 0.5s ease-in-out;
@@ -186,7 +201,7 @@
       -ms-transition: opacity 0.5s ease-in-out;
       -o-transition: opacity 0.5s ease-in-out;
       transition: opacity 0.5s ease-in-out;
-      opacity: 1!important;
+      opacity: 1 !important;
     }
   </style>
 </html>
