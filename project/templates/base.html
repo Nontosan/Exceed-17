@@ -100,14 +100,15 @@
     <!-- ====== -->
   </body>
   <script>
-    $("body").css("padding-top", $(".navbar").outerHeight() + "px");
+    $("body").css("padding-top", $(".navbar").outerHeight() + "px"); // padding body from navbar to get all content display
 
-    var bttEl = document.getElementById("btt");
+    var bttEl = document.getElementById("btt"); // get element that has 'btt' as id
     var tooltip = new bootstrap.Tooltip(bttEl, {
       title: "Back to Top",
       trigger: "manual",
-    });
+    }); // create bootstrap tooltip
 
+    // detect hover and manually show or hide tooltip (because the automatic way is not working)
     $(document).ready(function () {
       $(document).mousemove(function () {
         if ($("#btt:hover").length != 0) {
@@ -118,7 +119,7 @@
       });
     });
 
-    if ($(".smart-scroll").length > 0) {
+    if ($(".smart-scroll").length > 0) { // make navbar automatic hide when scroll down and show back when scroll up
       var last_scroll_top = 0;
       $(window).on("scroll", function () {
         scroll_top = $(this).scrollTop();
@@ -135,7 +136,7 @@
       });
     }
 
-    if ($("#btt").length > 0) {
+    if ($("#btt").length > 0) { // hide btt button when scroll down and show back when scroll up
       var last_scroll_top_invt = 0;
       $(window).on("scroll", function () {
         scroll_top_invt = $(this).scrollTop();
