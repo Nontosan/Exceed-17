@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    return render_template("index.html", F6=True, F7=False, F13=False, F14=False, F20=False, F21=False)
 
 
 @app.route("/login", methods=["POST", "GET"])
@@ -26,7 +26,7 @@ def lib_store():
 
 @app.route("/price-cal")
 def price_cal():
-    return render_template("price-cal.html", preice_cal=True)
+    return render_template("price-cal.html", price_cal=True)
 
 
 if __name__ == "__main__":

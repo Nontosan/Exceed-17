@@ -1,4 +1,427 @@
-{% extends "base.html" %}
-{% block title %}Home{% endblock %}
-{% block content_head %}<h1>This is home.</h1>{% endblock %}
-{% block content_body %}<p>This is body.</p>{% endblock %}
+{% extends "base.html" %} {% block title %}Home{% endblock %} {% block
+content_head %}
+<div class="container mb-1">
+  <div class="row">
+    <img src="./static/LOGO_T.png" style="width: 75vw" />
+  </div>
+</div>
+{% endblock %} {% block content_body %}
+<div class="container mb-5">
+  <div class="row">
+    <div class="col-12 mx-auto">
+      <div class="card">
+        <div class="card-header"><h1>Schedule</h1></div>
+        <div class="card-body">
+          <div class="accordion" id="accordionFlush">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="flush-headingOne">
+                {% if F6 %}
+                <button
+                  class="btn accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseOne"
+                  aria-expanded="false"
+                  aria-controls="flush-collapseOne"
+                >
+                {% else %}
+                <button
+                  class="btn accordion-button collapsed disabled"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseOne"
+                  aria-expanded="false"
+                  aria-controls="flush-collapseOne"
+                >
+                {% endif %}
+                  <p>วันที่ 6 กุมภาพันธ์ พ.ศ. 2564</p>
+                </button>
+              </h2>
+              <div
+                id="flush-collapseOne"
+                class="accordion-collapse collapse"
+                aria-labelledby="flush-headingOne"
+              >
+                <!-- removed data-bs-parent="#accordionFlush"  -->
+                <div class="accordion-body">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-9 mx-auto">
+                        <table>
+                          <tr>
+                            <th>เวลา</th>
+                            <th>กิจกรรม</th>
+                          </tr>
+                          <tr>
+                            <td>09.00 น.</td>
+                            <td>เปิดลงทะเบียน</td>
+                          </tr>
+                          <tr>
+                            <td>10.00-10.30 น.</td>
+                            <td>เปิดค่าย</td>
+                          </tr>
+                          <tr>
+                            <td>10.30-11.00 น.</td>
+                            <td>จับกลุ่ม</td>
+                          </tr>
+                          <tr>
+                            <td>11.00-12.00 น.</td>
+                            <td>ละลายพฤติกรรม</td>
+                          </tr>
+                          <tr>
+                            <td>12.00-13.00 น.</td>
+                            <td>รับประทานอาหารกลางวัน</td>
+                          </tr>
+                          <tr>
+                            <td>13.00-16.00 น.</td>
+                            <td>กิจกรรมการเรียนรู้ Design Thinking</td>
+                          </tr>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="flush-headingTwo">
+                {% if F7 %}
+                <button
+                  class="btn accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseTwo"
+                  aria-expanded="false"
+                  aria-controls="flush-collapseTwo"
+                >
+                {% else %}
+                <button
+                  class="btn accordion-button collapsed disabled"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseTwo"
+                  aria-expanded="false"
+                  aria-controls="flush-collapseTwo"
+                >
+                {% endif %}
+                  <p>วันที่ 7 กุมภาพันธ์ พ.ศ. 2564</p>
+                </button>
+              </h2>
+              <div
+                id="flush-collapseTwo"
+                class="accordion-collapse collapse"
+                aria-labelledby="flush-headingTwo"
+              >
+                <!-- removed data-bs-parent="#accordionFlush"  -->
+                <div class="accordion-body">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-9 mx-auto">
+                        <table>
+                          <tr>
+                            <th>เวลา</th>
+                            <th>กิจกรรม</th>
+                          </tr>
+                          <tr>
+                            <td>08.00 น.</td>
+                            <td>เปิดลงทะเบียน</td>
+                          </tr>
+                          <tr>
+                            <td>09.00-12.00 น.</td>
+                            <td>กิจกรรมการเรียนรู้รอบที่ 1</td>
+                          </tr>
+                          <tr>
+                            <td>12.00-13.00 น.</td>
+                            <td>รับประทานอาหารกลางวัน</td>
+                          </tr>
+                          <tr>
+                            <td>13.00-16.00 น.</td>
+                            <td>กิจกรรมการเรียนรู้รอบที่ 2</td>
+                          </tr>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="flush-headingThree">
+                {% if F13 %}
+                <button
+                  class="btn accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseThree"
+                  aria-expanded="false"
+                  aria-controls="flush-collapseThree"
+                >
+                {% else %}
+                <button
+                  class="btn accordion-button collapsed disabled"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseThree"
+                  aria-expanded="false"
+                  aria-controls="flush-collapseThree"
+                >
+                {% endif %}
+                  <p>วันที่ 13 กุมภาพันธ์ พ.ศ. 2564</p>
+                </button>
+              </h2>
+              <div
+                id="flush-collapseThree"
+                class="accordion-collapse collapse"
+                aria-labelledby="flush-headingThree"
+              >
+                <!-- removed data-bs-parent="#accordionFlush"  -->
+                <div class="accordion-body">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-9 mx-auto">
+                        <table>
+                          <tr>
+                            <th>เวลา</th>
+                            <th>กิจกรรม</th>
+                          </tr>
+                          <tr>
+                            <td>08.00 น.</td>
+                            <td>เปิดลงทะเบียน</td>
+                          </tr>
+                          <tr>
+                            <td>09.00-10.00 น.</td>
+                            <td>ถามตอบข้อสงสัยจากกิจกรรมการเรียนรู้</td>
+                          </tr>
+                          <tr>
+                            <td>10.00-12.00 น.</td>
+                            <td>ทดลองทำ Mini Project</td>
+                          </tr>
+                          <tr>
+                            <td>12.00-13.00 น.</td>
+                            <td>รับประทานอาหารกลางวัน</td>
+                          </tr>
+                          <tr>
+                            <td>13.00-16.00 น.</td>
+                            <td>ทดลองทำ Mini Project (ต่อ)</td>
+                          </tr>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="flush-headingFour">
+                {% if F14 %}
+                <button
+                  class="btn accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseFour"
+                  aria-expanded="false"
+                  aria-controls="flush-collapseFour"
+                >
+                {% else %}
+                <button
+                  class="btn accordion-button collapsed disabled"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseFour"
+                  aria-expanded="false"
+                  aria-controls="flush-collapseFour"
+                >
+                {% endif %}
+                  <p>วันที่ 14 กุมภาพันธ์ พ.ศ. 2564</p>
+                </button>
+              </h2>
+              <div
+                id="flush-collapseFour"
+                class="accordion-collapse collapse"
+                aria-labelledby="flush-headingFour"
+              >
+                <!-- removed data-bs-parent="#accordionFlush"  -->
+                <div class="accordion-body">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-9 mx-auto">
+                        <table>
+                          <tr>
+                            <th>เวลา</th>
+                            <th>กิจกรรม</th>
+                          </tr>
+                          <tr>
+                            <td>08.00 น.</td>
+                            <td>เปิดลงทะเบียน</td>
+                          </tr>
+                          <tr>
+                            <td>09.00-10.00 น.</td>
+                            <td>กิจกรรมการเรียนรู้การ Pitching</td>
+                          </tr>
+                          <tr>
+                            <td>12.00-13.00 น.</td>
+                            <td>รับประทานอาหารกลางวัน</td>
+                          </tr>
+                          <tr>
+                            <td>13.00-18.00 น.</td>
+                            <td>คิด และนำเสนอ Exceed Project</td>
+                          </tr>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="flush-headingFive">
+                {% if F20 %}
+                <button
+                  class="btn accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseFive"
+                  aria-expanded="false"
+                  aria-controls="flush-collapseFive"
+                >
+                {% else %}
+                <button
+                  class="btn accordion-button collapsed disabled"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseFive"
+                  aria-expanded="false"
+                  aria-controls="flush-collapseFive"
+                >
+                {% endif %}
+                  <p>วันที่ 20 กุมภาพันธ์ พ.ศ. 2564</p>
+                </button>
+              </h2>
+              <div
+                id="flush-collapseFive"
+                class="accordion-collapse collapse"
+                aria-labelledby="flush-headingFive"
+              >
+                <!-- removed data-bs-parent="#accordionFlush"  -->
+                <div class="accordion-body">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-9 mx-auto">
+                        <table>
+                          <tr>
+                            <th>เวลา</th>
+                            <th>กิจกรรม</th>
+                          </tr>
+                          <tr>
+                            <td>08.00-??.?? น.</td>
+                            <td>ทำ Exceed Project</td>
+                          </tr>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="flush-headingSix">
+                {% if F21 %}
+                <button
+                  class="btn accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseSix"
+                  aria-expanded="false"
+                  aria-controls="flush-collapseSix"
+                >
+                {% else %}
+                <button
+                  class="btn accordion-button collapsed disabled"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#flush-collapseSix"
+                  aria-expanded="false"
+                  aria-controls="flush-collapseSix"
+                >
+                {% endif %}
+                  <p>วันที่ 21 กุมภาพันธ์ พ.ศ. 2564</p>
+                </button>
+              </h2>
+              <div
+                id="flush-collapseSix"
+                class="accordion-collapse collapse"
+                aria-labelledby="flush-headingSix"
+              >
+                <!-- removed data-bs-parent="#accordionFlush"  -->
+                <div class="accordion-body">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-9 mx-auto">
+                        <table>
+                          <tr>
+                            <th>เวลา</th>
+                            <th>กิจกรรม</th>
+                          </tr>
+                          <tr>
+                            <td>08.00-12.00 น.</td>
+                            <td>ทำ Exceed Project (ต่อ)</td>
+                          </tr>
+                          <tr>
+                            <td>12.00-13.00 น.</td>
+                            <td>รับประทานอาหารกลางวัน</td>
+                          </tr>
+                          <tr>
+                            <td>13.00-16.00 น.</td>
+                            <td>กิจกรรม Demo Day</td>
+                          </tr>
+                          <tr>
+                            <td>16.00-17.00 น.</td>
+                            <td>ประกาศรางวัล และปิดค่าย</td>
+                          </tr>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  .accordion-button,
+  .accordion-button:focus {
+    background-color: white !important;
+    color: black !important;
+    box-shadow: none !important;
+    border: 1px solid #e3e3e3;
+  }
+  th,
+  td {
+    padding: 0 3rem 0 3rem;
+    width: 25vw;
+    border: 1px solid #e3e3e3;
+    border-collapse: collapse;
+  }
+  th {
+    text-align: center;
+  }
+  table {
+    width: 50vw;
+    /* text-align: center; */
+    border: 1px solid #e3e3e3;
+    border-collapse: collapse;
+  }
+</style>
+{% endblock %} {% block script %}
+<script>
+  $(document).ready(function () {
+    $(document).scroll(function () {
+      console.log($(this).scrollTop());
+    });
+  });
+</script>
+{% endblock %}
