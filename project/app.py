@@ -26,7 +26,7 @@ def lib_store():
 
 @app.route("/price-cal")
 def price_cal():
-    return render_template("price-cal.html", preice_cal=True)
+    return render_template("price-cal.html", price_cal=True)
 
 
 if __name__ == "__main__":
