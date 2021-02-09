@@ -11,7 +11,10 @@ def home():
 
 @app.route("/login", methods=["POST", "GET"])
 def login():
-    return render_template("login.html", login=True)
+    if request.method == "GET":
+        return render_template("login.html", login=True)
+    else:
+        return request.form
 
 
 @app.route("/balance", methods=["PUT", "GET"])
