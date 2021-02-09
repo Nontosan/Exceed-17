@@ -65,7 +65,13 @@ def token_required(f):
 @app.route('/')
 @token_required
 def tokenCheck():
-    return jsonify({'message': 'OK'})
+    token = auth.get_auth()['token']
+    decode_data = jwt.decode(token, app.config['SECRET_KEY'])
+    return jsonify({
+        'message': 'OK', 
+        'group': decode_data['group']
+        })
+
 
 @app.route('/sign-up', methods=['POST'])
 def createUser():
@@ -264,5 +270,5 @@ def getStatement():
 
 
 if __name__ == '__main__':
-    # app.run(host='0.0.0.0', port=3001, debug=True)
-    app.run(host='0.0.0.0', port=3000)
+    app.run(host='0.0.0.0', port=3001, debug=True)
+    # app.run(host='0.0.0.0', port=3000)
