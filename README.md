@@ -16,7 +16,9 @@ First, You need to install **python** on your computer from [this link](https://
 
 After that, You need to install **flask** to the python by type `python -m pip install flask` to your terminal. You can check if the library is installed correctly by type `python` to run the python shell, then type `import flask`. It should not show anything.
 
-Last, You need to install **pymongo** to the python by type `python -m pip install pymongo` to your terminal. You can check the installation by import the library to python as the same as **flask**.
+You also need to install **flask_pymongo** to the python by type `python -m pip install Flask_PyMongo` to your terminal. You can check the installation by import the library to python as the same as **flask**.
+
+Last, You need to install **pyjwt** to the python by type `pyhthon -m pip install pyjwt` to your terminal. You should check that it is install propely too.
 
 ## How to run the project?
 
