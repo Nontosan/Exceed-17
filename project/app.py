@@ -6,7 +6,14 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return render_template("index.html", F6=True, F7=False, F13=False, F14=False, F20=False, F21=False)
+    now = datetime.datetime.now()
+    F6 = datetime.datetime(2021,2,6)
+    F7 = datetime.datetime(2021,2,7)
+    F13 = datetime.datetime(2021,2,13)
+    F14 = datetime.datetime(2021,2,14)
+    F20 = datetime.datetime(2021,2,20)
+    F21 = datetime.datetime(2021,2,21)
+    return render_template("index.html",F6=now>=F6,F7=now>=F7,F13=now>=F13,F14=now>=F14,F20=now>=F20,F21=now>=F21)
 
 
 @app.route("/login", methods=["POST", "GET"])
