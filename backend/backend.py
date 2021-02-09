@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request, make_response
 from flask_pymongo import PyMongo
+from flask_httpauth import HTTPTokenAuth
 import hashlib, binascii, os
 import json
 import jwt
@@ -11,6 +12,7 @@ f = open('config.json')
 config = json.load(f)
 
 app = Flask(__name__)
+auth = HTTPTokenAuth(scheme='Bearer')
 
 app.config['MONGO_URI'] = config['mongo_uri']
 app.config['SECRET_KEY'] = config['secret_key']
@@ -20,6 +22,7 @@ f.close()
 mongo = PyMongo(app)
 userCollection = mongo.db.user
 groupCollection = mongo.db.group
+statementCollection = mongo.db.statement
 
 
 def hash_password(password):
@@ -44,9 +47,9 @@ def verify_password(stored_password, provided_password):
 def token_required(f):
     @wraps(f)
     def decorated(*args, **kwargs):
-        token = request.args.get('token')
-
-        if not token:
+        try:
+            token = auth.get_auth()['token']
+        except:
             return jsonify({'message': 'Token is missing'}), 403
 
         try:
@@ -59,16 +62,10 @@ def token_required(f):
     return decorated
 
 
-@app.route('/return_group_from_token')
+@app.route('/')
 @token_required
-def returnGroup():
-    token = request.args.get('token')
-    decode_data = jwt.decode(token, app.config['SECRET_KEY'])
-    return jsonify({
-        'user': decode_data['username'],
-        'group': decode_data['group']
-    })
-
+def tokenCheck():
+    return jsonify({'message': 'OK'})
 
 @app.route('/sign-up', methods=['POST'])
 def createUser():
@@ -120,7 +117,7 @@ def login():
 @app.route('/balance', methods=['GET'])
 @token_required
 def getBalance():
-    token = request.args.get('token')
+    token = auth.get_auth()['token']
     decode_data = jwt.decode(token, app.config['SECRET_KEY'])
 
     group = decode_data['group']
@@ -146,5 +143,126 @@ def getBalance():
         return jsonify({"group": data["group"], "balance": data["balance"]}), 200
 
 
+@app.route('/balance', methods=['PUT'])
+@token_required
+def putBalance():
+    body = request.json
+    token = auth.get_auth()['token']
+    decode_data = jwt.decode(token, app.config['SECRET_KEY'])
+    
+    group = decode_data['group']
+
+    try:
+        methods = body['methods']
+        target = body['target'] 
+        value = body['value']
+        description = body['description']
+    except:
+        return jsonify({'message': 'Bad Request'}), 400
+
+    now = datetime.datetime.now()
+    date = str(now.date())
+    time = str(now.time())
+
+    if group == 'admin':
+        if methods == 'deposit':
+            filt = {'group': target}
+            old_balance = groupCollection.find_one(filt)['balance']
+            groupCollection.update_one(filt, {"$set": {"balance": old_balance + value}})
+
+            statementCollection.insert_one({
+                "group": target,
+                "transactor": "admin",
+                "methods": "deposit",
+                "value": value,
+                "timestamp": f"{date}_{time[:8]}",
+                "description": description
+            })
+
+            return jsonify({'message': f"Group {target[1:]} have received {value} XCoin!"}), 200
+        else:
+            return jsonify({'message': 'Bad Request'}), 400
+
+    else:
+        data = groupCollection.find_one({'group': group})
+        if not data:
+            return jsonify({'data': "Can't find group."}), 404
+        
+        if methods == 'transfer':
+            src_filt = {'group': group}
+            des_filt = {'group': target}
+
+            src_old_balance = groupCollection.find_one(src_filt)['balance']
+
+            if (src_old_balance < value):
+                return jsonify({'message': 'Not enough money!'}), 406
+            
+            des_old_balance = groupCollection.find_one(des_filt)['balance']
+            if not isinstance(des_old_balance, int):
+                return jsonify({'message': "Can't find target group."}), 404
+
+            groupCollection.update_one(des_filt, {"$set": {"balance": des_old_balance + value}})
+            groupCollection.update_one(src_filt, {"$set": {"balance": src_old_balance - value}})
+
+            # for receiver
+            statementCollection.insert_one({
+                "group": target,
+                "transactor": group,
+                "methods": "transfer received",
+                "value": value,
+                "timestamp": f"{date}_{time[:8]}",
+                "description": description
+            })
+
+            # for sender
+            statementCollection.insert_one({
+                "group": group,
+                "transactor": group,
+                "methods": "transfer sent",
+                "value": value,
+                "timestamp": f"{date}_{time[:8]}",
+                "description": description
+            })
+
+            return jsonify({'message': 'Transfer complete!'}), 200
+        elif methods == 'deposit':
+            return jsonify({'message': 'Unauthorized.'}), 401
+        else:
+            return jsonify({'message': 'Bad Request.'}), 400
+
+
+@app.route('/statement', methods=['GET'])
+@token_required
+def getStatement():
+    token = auth.get_auth()['token']
+    decode_data = jwt.decode(token, app.config['SECRET_KEY'])
+
+    group = decode_data['group']
+
+    if group == 'admin':
+        return jsonify({'message': 'Please see full statement at admin mongo page.'}), 200
+    
+    filt = {'group': group}
+    group_statement = statementCollection.find(filt)
+
+    output = []
+
+    for statement in group_statement:
+        output.append({
+            "group": statement['group'],
+            "transactor": statement['transactor'],
+            "methods": statement['methods'],
+            "value": statement['value'],
+            "timestamp": statement['timestamp'],
+            "description": statement['description']
+        })
+    
+    if output:
+        return jsonify(output), 200
+    else:
+        return jsonify({'message': "Your group's statement is empty."}), 200
+
+
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=3000, debug=True)
+    # app.run(host='0.0.0.0', port=3001, debug=True)
+    app.run(host='0.0.0.0', port=3000)
