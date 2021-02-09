@@ -45,9 +45,13 @@
           <hr style="color: white" />
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              {% if login %}
+              {% if login == 2 %}
               <a class="nav-link disabled" aria-current="page" href="/login"
                 ><p>Login</p></a
+              >
+              {% elif login == 1 %}
+              <a class="nav-link active" aria-current="page" href="/logout"
+                ><p>Logout</p></a
               >
               {% else %}
               <a class="nav-link active" aria-current="page" href="/login"
