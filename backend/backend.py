@@ -15,10 +15,11 @@ app = Flask(__name__)
 app.config['MONGO_URI'] = config['mongo_uri']
 app.config['SECRET_KEY'] = config['secret_key']
 
+f.close()
+
 mongo = PyMongo(app)
 userCollection = mongo.db.user
-
-f.close()
+groupCollection = mongo.db.group
 
 
 def hash_password(password):
@@ -114,6 +115,35 @@ def login():
         return jsonify({'token': token.decode('UTF-8')})
 
     return make_response('Could not verify!', 401, {'WWW-Authenticate': 'Basic realm="Login Required"'})
+
+
+@app.route('/balance', methods=['GET'])
+@token_required
+def getBalance():
+    token = request.args.get('token')
+    decode_data = jwt.decode(token, app.config['SECRET_KEY'])
+
+    group = decode_data['group']
+
+    if group == 'admin':
+        all_data = groupCollection.find()
+
+        output = []
+
+        for ele in all_data:
+            output.append({
+                'group': ele['group'],
+                'balance': ele['balance']
+            })
+
+        return jsonify(output), 200
+
+    else:
+        data = groupCollection.find_one({'group': group})
+        if not data:
+            return jsonify({'data': "Can't find group's balance"}), 404
+
+        return jsonify({"group": data["group"], "balance": data["balance"]}), 200
 
 
 if __name__ == '__main__':
