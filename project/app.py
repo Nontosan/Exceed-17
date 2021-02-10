@@ -99,7 +99,11 @@ def balance():
     if response.json()["group"] == "admin":
         return render_template("balance_admin.html", balance=True, login=login_cond)
     else:
-        return render_template("balance.html", balance=True, login=login_cond)
+        header = {"Authorization":f"Bearer {request.cookies.get('token')}"}
+        statement_response = requests.get("http://158.108.182.0:3000/statement", headers=header)
+        print(statement_response.json())
+        # [{'description': 'test', 'group': 'g1', 'methods': 'transfer sent', 'timestamp': '2021-02-09_20:45:45', 'transactor': 'g1', 'value': 1000}]
+        return render_template("balance.html", balance=True, login=login_cond, sttmnt=statement_response)
 
 
 @app.route("/price-cal")
