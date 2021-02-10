@@ -1,4 +1,152 @@
-{% extends "base.html" %}
-{% block title %}Balance{% endblock %}
-{% block content_head %}<h1>This is balance.</h1>{% endblock %}
-{% block content_body %}<p>This is body.</p>{% endblock %}
+{% extends "base.html" %} {% block title %}Balance{% endblock %} {% block
+content_head %}{% endblock %} {% block content_body %}
+<div class="container my-5">
+  <div class="row mb-5">
+    <div class="col-10 mx-auto">
+      <div class="card">
+        <div class="card-body my-5 px-5">
+          <form
+            method="POST"
+            action="/balance"
+            class="needs-validation"
+            novalidate
+          >
+            <div class="container">
+              <div class="row mb-3">
+                <label for="group" class="form-label"><span>Group</span></label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="group"
+                  name="group"
+                  placeholder="Group Name"
+                  required
+                />
+                <div class="invalid-feedback">
+                  <span style="font-size: 2rem">Required!</span>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label for="amount" class="form-label"
+                  ><span>Amount</span></label
+                >
+                <input
+                  type="number"
+                  class="form-control"
+                  id="amount"
+                  name="amount"
+                  placeholder="X-coin amount (integer only)"
+                  required
+                />
+                <div class="invalid-feedback">
+                  <span style="font-size: 2rem">Required!</span>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label for="description" class="form-label"
+                  ><span>Description</span></label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="description"
+                  name="description"
+                  placeholder="Description"
+                  required
+                />
+                <div class="invalid-feedback">
+                  <span style="font-size: 2rem">Required!</span>
+                </div>
+              </div>
+              <div class="row text-center justify-content-center mt-5">
+                <div class="col">
+                  <span>
+                    <button
+                      type="submit"
+                      class="btn text-white"
+                      style="background-color: #f11716; font-size: 2rem"
+                    >
+                      Submit
+                    </button>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col-10 mx-auto">
+      <div class="card">
+        <div class="card-body">
+          <div class="overflow-auto" style="height: 25vh;">
+            <table class="mx-auto">
+              <tr>
+                <th>Group</th>
+                <th>Balance</th>
+              </tr>
+              {% for i in table %}
+              <tr>
+                <td style="text-align: center">{{i["group"]}}</td>
+                <td style="text-align: right">
+                  {{i["balance"]}}<img
+                    class="ms-3"
+                    src="./static/X-Coin.png"
+                    width="25vw"
+                  />
+                </td>
+              </tr>
+              {% endfor %}
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %} {% block script %}
+<script>
+  (function () {
+    "use strict";
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll(".needs-validation");
+
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms).forEach(function (form) {
+      form.addEventListener(
+        "submit",
+        function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+
+          form.classList.add("was-validated");
+        },
+        false
+      );
+    });
+  })();
+</script>
+<style>
+  th,
+  td {
+    padding: 0 3rem 0 3rem;
+    width: 25vw;
+    border: 1px solid #e3e3e3;
+    border-collapse: collapse;
+  }
+  th {
+    text-align: center;
+  }
+  table {
+    width: 50vw;
+    /* text-align: center; */
+    border: 1px solid #e3e3e3;
+    border-collapse: collapse;
+  }
+</style>
+{% endblock %}
