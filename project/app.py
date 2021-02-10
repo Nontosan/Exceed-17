@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request, session, make_response, redirect, flash
+from flask import Flask, render_template, url_for, request, session, make_response, redirect, flash, Markup
 from functools import wraps
 import datetime
 import requests
@@ -17,7 +17,7 @@ def token_required(func):
             return func(*args, **kwargs)
         else:
             flash("login first!", "danger")
-            return redirect(url_for("home"))
+            return redirect(url_for("login"))
     return inner
 
 def admin_required(func):
@@ -35,16 +35,22 @@ def admin_required(func):
 def login_chk():
     header = {"Authorization":f"Bearer {request.cookies.get('token')}"}
     response = requests.get("http://158.108.182.0:3000/", headers=header)
-    print(response.json())
     if response.json()["message"] == "OK":
         login_cond = 1
     else:
         login_cond = 0
-    return login_cond
+
+    try:
+        response.json()["group"]
+    except:
+        return login_cond, ""
+    else:
+        return login_cond, response.json()["group"]
+
 
 @app.route("/")
 def home():
-    login_cond=login_chk()
+    login_cond, group = login_chk()
 
     now = datetime.datetime.now()
     F6 = datetime.datetime(2021,2,6)
@@ -53,7 +59,7 @@ def home():
     F14 = datetime.datetime(2021,2,14)
     F20 = datetime.datetime(2021,2,20)
     F21 = datetime.datetime(2021,2,21)
-    return render_template("index.html",F6=now>=F6,F7=now>=F7,F13=now>=F13,F14=now>=F14,F20=now>=F20,F21=now>=F21, login=login_cond)
+    return render_template("index.html", F6=now>=F6, F7=now>=F7, F13=now>=F13, F14=now>=F14, F20=now>=F20, F21=now>=F21, login=login_cond, group=group)
 
 @app.route("/logout", methods=["GET"])
 def logout():
@@ -82,7 +88,7 @@ def login():
 
         if (response.status_code == 401):
             flash("login fail!", "danger")
-            return render_template("login.html", login=2)
+            return render_template("login.html", login=2, group="")
         else:
             json = response.json()
             resp = make_response(redirect("/"))
@@ -95,22 +101,22 @@ def login():
 @app.route("/balance", methods=["PUT", "GET"])
 @token_required
 def balance():
-    login_cond = login_chk()
+    login_cond, group = login_chk()
 
     header = {"Authorization":f"Bearer {request.cookies.get('token')}"}
     response = requests.get("http://158.108.182.0:3000/", headers=header)
     if response.json()["group"] == "admin":
-        return render_template("balance_admin.html", balance=True, login=login_cond)
+        return render_template("balance_admin.html", balance=True, login=login_cond, group=group)
     else:
-        return render_template("balance.html", balance=True, login=login_cond)
+        return render_template("balance.html", balance=True, login=login_cond, group=group)
 
 
 @app.route("/price-cal")
 @token_required
 @admin_required
 def price_cal():
-    login_cond = login_chk()
-    return render_template("price-cal.html", price_cal=True, login=login_cond)
+    login_cond, group = login_chk()
+    return render_template("price-cal.html", price_cal=True, login=login_cond, group=group)
 
 
 if __name__ == "__main__":
