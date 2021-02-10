@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request, session, make_response, redirect, flash
+from flask import Flask, render_template, url_for, request, session, make_response, redirect, flash, Markup
 from functools import wraps
 import datetime
 import requests
@@ -17,7 +17,7 @@ def token_required(func):
             return func(*args, **kwargs)
         else:
             flash("login first!", "danger")
-            return redirect(url_for("home"))
+            return redirect(url_for("login"))
     return inner
 
 def admin_required(func):
