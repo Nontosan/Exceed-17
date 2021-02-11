@@ -1,4 +1,72 @@
 {% extends "base.html" %}
 {% block title %}Price Cal.{% endblock %}
 {% block content_head %}<h1>This is price-cal.</h1>{% endblock %}
-{% block content_body %}<p>This is body.</p>{% endblock %}
+{% block content_body %}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-2">
+            <div class="card-header"><h4> Cart </h4></div>
+            <ul class="list-group list-group-flush" id="cart"></ul>
+        </div>
+        <div class="col-10  text-center">
+            <div class="row">
+                <div class="col-3"></div>
+                <div class="col-6">
+                    <div style="height:5vw" ><p> Total Price <span id="totalPrice"> 0 </span> </p></div>
+                </div>
+                <div class="col-3"><img src="../static/X-Coin.png" style="height:5vw" alt="X-Coin"></div>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <div style="height:5vw" ><span id="left_value"> 0 </span></div>
+                </div>
+                <div class="col-6">
+                    <input type="range" id="rangeInput" min="30" max="70" value="0" style="width:100%" oninput="amount.value=rangeInput.value">  
+                    <span id="slider_value"> 30 </span>
+                </div>
+                <div class="col-3">                        
+                    <div style="height:5vw" ><span id="right_value"> 0 </span></div>
+                </div>
+            </div>
+            <div class="row">
+                {%for i in ic%}
+                    <div class="col-6 col-sm-3">
+                        <div class="card">
+                            <div class="card-body">
+                                <img src= {{pic_path[i]}} style="height: 10vw; width: 10vm" alt="...">
+                                <h6 class="card-title" >{{name[i]}}</h6>
+                                <h6 class="card-text">{{price[i]}} x-coin</h6>
+                                <button id="{{name[i]}}" value="{{ price[i] }}" class="btn btn-warning">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block script %}
+<script>
+    let totalPrice = 0;
+    let cart = [];
+    let amount = 0;
+    $("button").click(function() {
+        let item = $(this).val();
+        totalPrice += Number(item)
+        amount += 1;
+        $("#totalPrice").text(totalPrice)
+        $("#cart").append('<li class="list-group-item">'+$(this).attr('id')+'</li>')
+    })
+
+    $(document).on('input', '#rangeInput', function() {
+        let percent =  $(this).val();
+        $('#slider_value').text(percent);
+        let left_value = (totalPrice*percent)/100;
+        let right_value = (totalPrice*(100-percent))/100;
+        $('#left_value').text(left_value);
+        $('#right_value').text(right_value);
+    })
+</script>
+{% endblock %}
