@@ -51,49 +51,14 @@ def lib_store():
     return render_template("lib-store.html", lib_store=True)
 
 
-@app.route("/price-cal")
+@app.route("/price-cal", methods=["GET"])
 def price_cal():
-    #ic_res = request.get("http://158.108.182.0:3000/ic")
-    ic_res = [
-        {
-            "Name": "Buzzer",
-            "Pic_path": "../static/X-Coin.png",
-            "Price": 245
-        },
-        {
-            "Name": "Resistor",
-            "Pic_path": "../static/X-Coin.png",
-            "Price": 35
-        },
-        {
-            "Name": "Breadbroad",
-            "Pic_path": "../static/X-Coin.png",
-            "Price": 200
-        },
-        {
-            "Name": "LDR",
-            "Pic_path": "../static/X-Coin.png",
-            "Price": 50
-        },
-        {
-            "Name": "LED",
-            "Pic_path": "../static/X-Coin.png",
-            "Price": 1000
-        }      
-    ]
-    #print(ic_res.json())
-    print(ic_res)
-    ic = {}
-    name = []
-    pic_path = []
-    price = []
-    for i in range(len(ic_res)):
-        #ic[i] = ic_res.json()[i]
-        ic[i] = ic_res[i]
-        name.append(ic[i]['Name'])
-        pic_path.append(ic[i]['Pic_path'])
-        price.append(ic[i]['Price'])
-    return render_template("price-cal.html", price_cal=True, ic=ic, name=name, pic_path=pic_path, price=price)
+    ic = []
+    ic_res = requests.get("http://158.108.182.0:3001/warehouse")
+    for obj in ic_res.json()["data"]:
+        price_ = obj["price"]
+        ic.append({"img_src":obj["img_src"], "name":"-".join(obj["sensor"].split(" ")), "price":f"{price_:,.0f}"})
+    return render_template("price-cal.html", price_cal=True, ic=ic)
 
 
 if __name__ == "__main__":
