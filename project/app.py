@@ -193,7 +193,6 @@ def balance():
         l = len(statement)
         return render_template("balance.html", balance=True, login=login_cond, statement=statement, description=description, group=group, methods=methods, timestamp=timestamp, transactor=transactor, value=value, len=l, Balance=Balance)
 
-
 @app.route("/price-cal")
 @token_required
 @admin_required
@@ -238,6 +237,7 @@ def price_cal():
         pic_path.append(ic[i]['Pic_path'])
         price.append(ic[i]['Price'])
     return render_template("price-cal.html", price_cal=True, ic=ic, name=name, pic_path=pic_path, price=price)
+
 
 @app.route("/chart_test")
 def chart():
