@@ -206,9 +206,6 @@ def price_cal():
     return render_template("price-cal.html", price_cal=True, ic=ic)
 
 
-@app.route("/chart_test")
-def chart():
-    return render_template("chart.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
