@@ -1,4 +1,89 @@
-{% extends "base.html" %}
-{% block title %}Balance{% endblock %}
-{% block content_head %}<h1>This is balance.</h1>{% endblock %}
-{% block content_body %}<p>This is body.</p>{% endblock %}
+{% extends "base.html" %} 
+{% block title %}test{% endblock %} 
+{% block content_head %} {% endblock %} 
+{% block content_body %}
+<div class="container-fluid">
+  <div class="row">
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4 mx-auto">
+      <div
+        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
+      >
+        <h2>Balance</h2>
+        <div class="btn-toolbar mb-2 mb-md-0">
+          <div class="btn-group mr-2">xxxx coin</div>
+        </div>
+      </div>
+
+      <!--<canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>-->
+
+      <h2>Transaction</h2>
+      <div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th>Date&Time</th>
+              <th>description</th>
+              <th>Income - Expense</th>
+              <th>Balance</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1,001</td>
+              <td>random</td>
+              <td>data</td>
+              <td>placeholder</td>
+            </tr>
+            <tr>
+              <td>1,002</td>
+              <td>placeholder</td>
+              <td>irrelevant</td>
+              <td>visual</td>
+            </tr>
+            <tr>
+              <td>1,003</td>
+              <td>data</td>
+              <td>rich</td>
+              <td>dashboard</td>
+            </tr>
+            <tr>
+              <td>1,003</td>
+              <td>information</td>
+              <td>placeholder</td>
+              <td>illustrative</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+</div>
+{% endblock %} {% block script %}
+<script></script>
+{% endblock %} {% block style %}
+<style>
+  .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
+  body {
+    font-size: 0.875rem;
+  }
+
+  .feather {
+    width: 16px;
+    height: 16px;
+    vertical-align: text-bottom;
+  }
+</style>
+{% endblock %}
