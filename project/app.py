@@ -198,11 +198,46 @@ def balance():
 @token_required
 @admin_required
 def price_cal():
-    login_cond, group = login_chk()
-    return render_template(
-        "price-cal.html", price_cal=True, login=login_cond, group=group
-    )
-
+    ic_res = [
+        {
+            "Name": "Buzzer",
+            "Pic_path": "../static/X-Coin.png",
+            "Price": 245
+        },
+        {
+            "Name": "Resistor",
+            "Pic_path": "../static/X-Coin.png",
+            "Price": 35
+        },
+        {
+            "Name": "Breadbroad",
+            "Pic_path": "../static/X-Coin.png",
+            "Price": 200
+        },
+        {
+            "Name": "LDR",
+            "Pic_path": "../static/X-Coin.png",
+            "Price": 50
+        },
+        {
+            "Name": "LED",
+            "Pic_path": "../static/X-Coin.png",
+            "Price": 1000
+        }      
+    ]
+    #print(ic_res.json())
+    print(ic_res)
+    ic = {}
+    name = []
+    pic_path = []
+    price = []
+    for i in range(len(ic_res)):
+        #ic[i] = ic_res.json()[i]
+        ic[i] = ic_res[i]
+        name.append(ic[i]['Name'])
+        pic_path.append(ic[i]['Pic_path'])
+        price.append(ic[i]['Price'])
+    return render_template("price-cal.html", price_cal=True, ic=ic, name=name, pic_path=pic_path, price=price)
 
 @app.route("/chart_test")
 def chart():
