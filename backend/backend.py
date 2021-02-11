@@ -23,6 +23,7 @@ mongo = PyMongo(app)
 userCollection = mongo.db.user
 groupCollection = mongo.db.group
 statementCollection = mongo.db.statement
+warehouseCollection = mongo.db.warehouse
 
 
 def hash_password(password):
@@ -267,6 +268,23 @@ def getStatement():
         return jsonify(output), 200
     else:
         return jsonify({'message': "Your group's statement is empty."}), 200
+
+
+@app.route('/warehouse', methods=['GET'])
+def getWarehouse():
+    all_data = warehouseCollection.find()
+    output = []
+
+    for ele in all_data:
+        output.append({
+            "sensor": ele['sensor'],
+            "remain": ele['remain'],
+            "price": ele['price'],
+            "link": ele['link'],
+            "img_src": ele['img_src']
+        })
+    
+    return {"data": output}
 
 
 if __name__ == '__main__':
