@@ -174,7 +174,7 @@ def balance():
 @admin_required
 def price_cal():
     ic = []
-    ic_res = requests.get("http://158.108.182.0:3001/warehouse")
+    ic_res = requests.get("http://158.108.182.0:3000/warehouse")
     for obj in ic_res.json()["data"]:
         price_ = obj["price"]
         ic.append({"img_src":obj["img_src"], "name":"-".join(obj["sensor"].split(" ")), "price":f"{price_:,.0f}"})
