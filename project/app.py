@@ -208,16 +208,5 @@ def price_cal():
 def chart():
     return render_template("chart.html")
 
-
-@app.route('/data')
-def data():
-    return jsonify({'result': sample(range(1, 10), 7)})
-
-
-@app.route('/temp')
-def temp():
-    return render_template('temp.html')
-
-
 if __name__ == "__main__":
     app.run(debug=True)
