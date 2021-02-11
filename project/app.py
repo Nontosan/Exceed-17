@@ -8,12 +8,14 @@ from flask import (
     redirect,
     flash,
     Markup,
+    jsonify
 )
 from functools import wraps
 import datetime
 import requests
 import base64
 import json
+from random import sample
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "abcdef"
@@ -130,14 +132,15 @@ def login():
 @token_required
 def balance():
     login_cond, group = login_chk()
-
     header = {"Authorization": f"Bearer {request.cookies.get('token')}"}
     response = requests.get("http://158.108.182.0:3000/", headers=header)
     if response.json()["group"] == "admin":
         if request.method == "GET":
-            data = requests.get("http://158.108.182.0:3000/balance", headers=header)
+            data = requests.get(
+                "http://158.108.182.0:3000/balance", headers=header)
             table = data.json()
-            table = [{"balance":f"{i['balance']:,.2f}", "group":i["group"]} for i in table]
+            table = [{"balance": f"{i['balance']:,.2f}",
+                      "group": i["group"]} for i in table]
             return render_template(
                 "balance_admin.html", balance=True, login=login_cond, group=group, table=table
             )
@@ -162,11 +165,33 @@ def balance():
 
             return redirect("#")
     else:
-        header = {"Authorization":f"Bearer {request.cookies.get('token')}"}
-        statement_response = requests.get("http://158.108.182.0:3000/statement", headers=header)
-        print(statement_response.json())
-        # [{'description': 'test', 'group': 'g1', 'methods': 'transfer sent', 'timestamp': '2021-02-09_20:45:45', 'transactor': 'g1', 'value': 1000}]
-        return render_template("balance.html", balance=True, login=login_cond, sttmnt=statement_response)
+        header = {"Authorization": f"Bearer {request.cookies.get('token')}"}
+        statement_res = requests.get(
+            "http://158.108.182.0:3000/statement", headers=header)
+        balance_res = requests.get(
+            "http://158.108.182.0:3000/balance", headers=header)
+        statement = {}
+        description = ["Initial money"]
+        methods = ["xxx"]
+        timestamp = ["---"]
+        transactor = ["admin"]
+        value = [0]
+        Balance = [0 for i in range(len(statement_res.json())+1)]
+        real_group = response.json()["group"]
+        for i in range(len(statement_res.json())):
+            statement[i] = statement_res.json()[i]
+            group = statement[i]["group"]
+            if(real_group == group):
+                description.append(statement[i]["description"])
+                methods.append(statement[i]["methods"])
+                timestamp.append(statement[i]["timestamp"])
+                transactor.append(statement[i]["transactor"])
+                value.append(statement[i]["value"])
+                Balance[i+1] = Balance[i]+value[i+1]
+            else:
+                continue
+        l = len(statement)
+        return render_template("balance.html", balance=True, login=login_cond, statement=statement, description=description, group=group, methods=methods, timestamp=timestamp, transactor=transactor, value=value, len=l, Balance=Balance)
 
 
 @app.route("/price-cal")
@@ -179,6 +204,21 @@ def price_cal():
         price_ = obj["price"]
         ic.append({"img_src":obj["img_src"], "name":"-".join(obj["sensor"].split(" ")), "price":f"{price_:,.0f}"})
     return render_template("price-cal.html", price_cal=True, ic=ic)
+
+
+@app.route("/chart_test")
+def chart():
+    return render_template("chart.html")
+
+
+@app.route('/data')
+def data():
+    return jsonify({'result': sample(range(1, 10), 7)})
+
+
+@app.route('/temp')
+def temp():
+    return render_template('temp.html')
 
 
 if __name__ == "__main__":
