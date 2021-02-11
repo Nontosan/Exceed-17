@@ -205,7 +205,5 @@ def price_cal():
         ic.append({"img_src":obj["img_src"], "name":"-".join(obj["sensor"].split(" ")), "price":f"{price_:,.0f}"})
     return render_template("price-cal.html", price_cal=True, ic=ic)
 
-
-
 if __name__ == "__main__":
     app.run(debug=True)
