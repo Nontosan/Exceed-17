@@ -53,7 +53,47 @@ def lib_store():
 
 @app.route("/price-cal")
 def price_cal():
-    return render_template("price-cal.html", price_cal=True)
+    #ic_res = request.get("http://158.108.182.0:3000/ic")
+    ic_res = [
+        {
+            "Name": "Buzzer",
+            "Pic_path": "../static/X-Coin.png",
+            "Price": 245
+        },
+        {
+            "Name": "Resistor",
+            "Pic_path": "../static/X-Coin.png",
+            "Price": 35
+        },
+        {
+            "Name": "Breadbroad",
+            "Pic_path": "../static/X-Coin.png",
+            "Price": 200
+        },
+        {
+            "Name": "LDR",
+            "Pic_path": "../static/X-Coin.png",
+            "Price": 50
+        },
+        {
+            "Name": "LED",
+            "Pic_path": "../static/X-Coin.png",
+            "Price": 1000
+        }      
+    ]
+    #print(ic_res.json())
+    print(ic_res)
+    ic = {}
+    name = []
+    pic_path = []
+    price = []
+    for i in range(len(ic_res)):
+        #ic[i] = ic_res.json()[i]
+        ic[i] = ic_res[i]
+        name.append(ic[i]['Name'])
+        pic_path.append(ic[i]['Pic_path'])
+        price.append(ic[i]['Price'])
+    return render_template("price-cal.html", price_cal=True, ic=ic, name=name, pic_path=pic_path, price=price)
 
 
 if __name__ == "__main__":
