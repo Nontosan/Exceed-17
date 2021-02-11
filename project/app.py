@@ -168,29 +168,34 @@ def balance():
         header = {"Authorization": f"Bearer {request.cookies.get('token')}"}
         statement_res = requests.get(
             "http://158.108.182.0:3000/statement", headers=header)
-        balance_res = requests.get(
-            "http://158.108.182.0:3000/balance", headers=header)
+        # balance_res = requests.get(
+        #     "http://158.108.182.0:3000/balance", headers=header)
+        # print(balance_res.json())
+        # print(statement_res.json())
         statement = {}
         description = ["Initial money"]
         methods = ["xxx"]
         timestamp = ["---"]
         transactor = ["admin"]
         value = [0]
-        Balance = [0 for i in range(len(statement_res.json())+1)]
-        real_group = response.json()["group"]
-        for i in range(len(statement_res.json())):
-            statement[i] = statement_res.json()[i]
-            group = statement[i]["group"]
-            if(real_group == group):
-                description.append(statement[i]["description"])
-                methods.append(statement[i]["methods"])
-                timestamp.append(statement[i]["timestamp"])
-                transactor.append(statement[i]["transactor"])
-                value.append(statement[i]["value"])
-                Balance[i+1] = Balance[i]+value[i+1]
-            else:
-                continue
-        l = len(statement)
+        l = 0
+        Balance = [0]
+        if (statement_res.json()["message"] != "Your group's statement is empty."):
+            Balance = [0 for i in range(len(statement_res.json())+1)]
+            real_group = response.json()["group"]
+            for i in range(len(statement_res.json())):
+                statement[i] = statement_res.json()[i]
+                group = statement[i]["group"]
+                if(real_group == group):
+                    description.append(statement[i]["description"])
+                    methods.append(statement[i]["methods"])
+                    timestamp.append(statement[i]["timestamp"])
+                    transactor.append(statement[i]["transactor"])
+                    value.append(statement[i]["value"])
+                    Balance[i+1] = Balance[i]+value[i+1]
+                else:
+                    continue
+            l = len(statement)
         return render_template("balance.html", balance=True, login=login_cond, statement=statement, description=description, group=group, methods=methods, timestamp=timestamp, transactor=transactor, value=value, len=l, Balance=Balance)
 
 
