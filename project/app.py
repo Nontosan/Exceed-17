@@ -215,7 +215,6 @@ def balance():
             description=description
         )
 
-
 @app.route("/price-cal")
 @token_required
 @admin_required
@@ -232,7 +231,6 @@ def price_cal():
             }
         )
     return render_template("price-cal.html", price_cal=True, ic=ic)
-
 
 if __name__ == "__main__":
     app.run(debug=True)
