@@ -8,7 +8,7 @@ from flask import (
     redirect,
     flash,
     Markup,
-    jsonify
+    jsonify,
 )
 from functools import wraps
 import datetime
@@ -136,13 +136,17 @@ def balance():
     response = requests.get("http://158.108.182.0:3000/", headers=header)
     if response.json()["group"] == "admin":
         if request.method == "GET":
-            data = requests.get(
-                "http://158.108.182.0:3000/balance", headers=header)
+            data = requests.get("http://158.108.182.0:3000/balance", headers=header)
             table = data.json()
-            table = [{"balance": f"{i['balance']:,.2f}",
-                      "group": i["group"]} for i in table]
+            table = [
+                {"balance": f"{i['balance']:,.2f}", "group": i["group"]} for i in table
+            ]
             return render_template(
-                "balance_admin.html", balance=True, login=login_cond, group=group, table=table
+                "balance_admin.html",
+                balance=True,
+                login=login_cond,
+                group=group,
+                table=table,
             )
         else:
             payload = request.form
@@ -160,88 +164,73 @@ def balance():
                 "Content-Type": "application/json",
             }
             response = requests.put(
-                "http://158.108.182.0:3000/balance", headers=header, data=json.dumps(data)
+                "http://158.108.182.0:3000/balance",
+                headers=header,
+                data=json.dumps(data),
             )
 
             return redirect("#")
     else:
         header = {"Authorization": f"Bearer {request.cookies.get('token')}"}
         statement_res = requests.get(
-            "http://158.108.182.0:3000/statement", headers=header)
-        balance_res = requests.get(
-            "http://158.108.182.0:3000/balance", headers=header)
-        statement = {}
-        description = ["Initial money"]
-        methods = ["xxx"]
-        timestamp = ["---"]
-        transactor = ["admin"]
-        value = [0]
-        Balance = [0 for i in range(len(statement_res.json())+1)]
-        real_group = response.json()["group"]
-        for i in range(len(statement_res.json())):
-            statement[i] = statement_res.json()[i]
-            group = statement[i]["group"]
-            if(real_group == group):
-                description.append(statement[i]["description"])
-                methods.append(statement[i]["methods"])
-                timestamp.append(statement[i]["timestamp"])
-                transactor.append(statement[i]["transactor"])
-                value.append(statement[i]["value"])
-                Balance[i+1] = Balance[i]+value[i+1]
-            else:
-                continue
-        l = len(statement)
-        return render_template("balance.html", balance=True, login=login_cond, statement=statement, description=description, group=group, methods=methods, timestamp=timestamp, transactor=transactor, value=value, len=l, Balance=Balance)
+            "http://158.108.182.0:3000/statement", headers=header
+        )
+        statement = statement_res.json()
+        balance = [0]
+        balance_str = ["0"]
+        value_str = ["-"]
+        date = ["-"]
+        time = ["-"]
+        statement_len = len(statement)
+        current_balance = 0
+        description = "-"
+        if statement_res.status_code != 404:
+            # real_group = response.json()["group"]
+            balance = [i["balance"] for i in statement]
+            balance_str = [f"{i:,.0f}" for i in balance]
+            value_str = [f"{i['value']:,.0f}" for i in statement]
+            date = [i["timestamp"].split("_")[0] for i in statement]
+            time = [i["timestamp"].split("_")[1] for i in statement]
+            current_balance = statement[0]["balance"]
+            description = [i["description"] for i in statement]
+            # for i in range(len(statement_res.json())):
+                # statement[i] = statement_res.json()[i]
+                # group = statement[i]["group"]
+                # if real_group == group:
+                #     pass
+                # else:
+                #     continue
+        return render_template(
+            "balance.html",
+            balance=True,
+            login=login_cond,
+            statement=statement,
+            _balance=balance,
+            statement_len=statement_len,
+            current_balance=f"{current_balance:,.0f}",
+            balance_str=balance_str,
+            value_str=value_str,
+            date=date,
+            time=time,
+            description=description
+        )
 
 @app.route("/price-cal")
 @token_required
 @admin_required
 def price_cal():
-    ic_res = [
-        {
-            "Name": "Buzzer",
-            "Pic_path": "../static/X-Coin.png",
-            "Price": 245
-        },
-        {
-            "Name": "Resistor",
-            "Pic_path": "../static/X-Coin.png",
-            "Price": 35
-        },
-        {
-            "Name": "Breadbroad",
-            "Pic_path": "../static/X-Coin.png",
-            "Price": 200
-        },
-        {
-            "Name": "LDR",
-            "Pic_path": "../static/X-Coin.png",
-            "Price": 50
-        },
-        {
-            "Name": "LED",
-            "Pic_path": "../static/X-Coin.png",
-            "Price": 1000
-        }      
-    ]
-    #print(ic_res.json())
-    print(ic_res)
-    ic = {}
-    name = []
-    pic_path = []
-    price = []
-    for i in range(len(ic_res)):
-        #ic[i] = ic_res.json()[i]
-        ic[i] = ic_res[i]
-        name.append(ic[i]['Name'])
-        pic_path.append(ic[i]['Pic_path'])
-        price.append(ic[i]['Price'])
-    return render_template("price-cal.html", price_cal=True, ic=ic, name=name, pic_path=pic_path, price=price)
-
-
-@app.route("/chart_test")
-def chart():
-    return render_template("chart.html")
+    ic = []
+    ic_res = requests.get("http://158.108.182.0:3000/warehouse")
+    for obj in ic_res.json()["data"]:
+        price_ = obj["price"]
+        ic.append(
+            {
+                "img_src": obj["img_src"],
+                "name": "-".join(obj["sensor"].split(" ")),
+                "price": f"{price_:,.0f}",
+            }
+        )
+    return render_template("price-cal.html", price_cal=True, ic=ic)
 
 if __name__ == "__main__":
     app.run(debug=True)
