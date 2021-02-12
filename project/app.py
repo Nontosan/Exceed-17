@@ -59,11 +59,11 @@ def login_chk():
         login_cond = 0
 
     try:
-        response.json()["group"]
+        response.json()["group_name"]
     except:
         return login_cond, ""
     else:
-        return login_cond, response.json()["group"]
+        return login_cond, response.json()["group_name"]
 
 
 @app.route("/")
