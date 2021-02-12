@@ -70,7 +70,8 @@ def tokenCheck():
     decode_data = jwt.decode(token, app.config['SECRET_KEY'])
     return jsonify({
         'message': 'OK', 
-        'group': decode_data['group']
+        'group': decode_data['group'],
+        'group_name': decode_data['group_name']
         })
 
 
@@ -90,10 +91,13 @@ def createUser():
     if user:
         return jsonify({'message': 'Username already exists.'}), 400
 
+    group_name = groupCollection.find_one({'group': group})['group_name']
+
     insert_data = {
         'username': username,
         'password': hash_password(password),
-        'group': group
+        'group': group,
+        'group_name': group_name
     }
     userCollection.insert_one(insert_data)
 
@@ -114,6 +118,7 @@ def login():
         token = jwt.encode({
             'username': auth.username,
             'group': user['group'],
+            'group_name': user['group_name'],
             'exp': datetime.datetime.utcnow() + datetime.timedelta(minutes=30)
             }, app.config['SECRET_KEY'])
         return jsonify({'token': token.decode('UTF-8')})
@@ -292,5 +297,5 @@ def getWarehouse():
 
 
 if __name__ == '__main__':
-    # app.run(host='0.0.0.0', port=3001, debug=True)
-    app.run(host='0.0.0.0', port=3000)
+    app.run(host='0.0.0.0', port=3001, debug=True)
+    # app.run(host='0.0.0.0', port=3000)
