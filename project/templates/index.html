@@ -50,7 +50,8 @@ content_head %}
                   <div class="container">
                     <div class="row">
                       <div class="col-9 mx-auto">
-                        <table>
+                        {% if F6 %}
+                        <table class="table-responsive">
                           <tr>
                             <th>เวลา</th>
                             <th>กิจกรรม</th>
@@ -80,6 +81,7 @@ content_head %}
                             <td>กิจกรรมการเรียนรู้ Design Thinking</td>
                           </tr>
                         </table>
+                        {% endif %}
                       </div>
                     </div>
                   </div>
@@ -120,7 +122,8 @@ content_head %}
                   <div class="container">
                     <div class="row">
                       <div class="col-9 mx-auto">
-                        <table>
+                        {% if F7 %}
+                        <table class="table-responsive">
                           <tr>
                             <th>เวลา</th>
                             <th>กิจกรรม</th>
@@ -142,6 +145,7 @@ content_head %}
                             <td>กิจกรรมการเรียนรู้รอบที่ 2</td>
                           </tr>
                         </table>
+                        {% endif %}
                       </div>
                     </div>
                   </div>
@@ -182,7 +186,8 @@ content_head %}
                   <div class="container">
                     <div class="row">
                       <div class="col-9 mx-auto">
-                        <table>
+                        {% if F13 %}
+                        <table class="table-responsive">
                           <tr>
                             <th>เวลา</th>
                             <th>กิจกรรม</th>
@@ -208,6 +213,7 @@ content_head %}
                             <td>ทดลองทำ Mini Project (ต่อ)</td>
                           </tr>
                         </table>
+                        {% endif %}
                       </div>
                     </div>
                   </div>
@@ -248,7 +254,8 @@ content_head %}
                   <div class="container">
                     <div class="row">
                       <div class="col-9 mx-auto">
-                        <table>
+                        {% if F14 %}
+                        <table class="table-responsive">
                           <tr>
                             <th>เวลา</th>
                             <th>กิจกรรม</th>
@@ -270,6 +277,7 @@ content_head %}
                             <td>คิด และนำเสนอ Exceed Project</td>
                           </tr>
                         </table>
+                        {% endif %}
                       </div>
                     </div>
                   </div>
@@ -310,7 +318,8 @@ content_head %}
                   <div class="container">
                     <div class="row">
                       <div class="col-9 mx-auto">
-                        <table>
+                        {% if F20 %}
+                        <table class="table-responsive">
                           <tr>
                             <th>เวลา</th>
                             <th>กิจกรรม</th>
@@ -320,6 +329,7 @@ content_head %}
                             <td>ทำ Exceed Project</td>
                           </tr>
                         </table>
+                        {% endif %}
                       </div>
                     </div>
                   </div>
@@ -360,7 +370,8 @@ content_head %}
                   <div class="container">
                     <div class="row">
                       <div class="col-9 mx-auto">
-                        <table>
+                        {% if F21 %}
+                        <table class="table-responsive">
                           <tr>
                             <th>เวลา</th>
                             <th>กิจกรรม</th>
@@ -382,6 +393,7 @@ content_head %}
                             <td>ประกาศรางวัล และปิดค่าย</td>
                           </tr>
                         </table>
+                        {% endif %}
                       </div>
                     </div>
                   </div>
@@ -420,11 +432,4 @@ content_head %}
   }
 </style>
 {% endblock %} {% block script %}
-<script>
-  $(document).ready(function () {
-    $(document).scroll(function () {
-      console.log($(this).scrollTop());
-    });
-  });
-</script>
 {% endblock %}
