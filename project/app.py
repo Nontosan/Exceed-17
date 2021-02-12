@@ -219,6 +219,7 @@ def balance():
 @token_required
 @admin_required
 def price_cal():
+    login_cond, group = login_chk()
     ic = []
     ic_res = requests.get("http://158.108.182.0:3000/warehouse")
     for obj in ic_res.json()["data"]:
@@ -230,7 +231,7 @@ def price_cal():
                 "price": f"{price_:,.0f}",
             }
         )
-    return render_template("price-cal.html", price_cal=True, ic=ic)
+    return render_template("price-cal.html", price_cal=True, ic=ic, login=login_cond, group=group)
 
 if __name__ == "__main__":
     app.run(debug=True)
