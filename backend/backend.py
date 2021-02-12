@@ -182,6 +182,7 @@ def putBalance():
                 "transactor": "admin",
                 "methods": "deposit",
                 "value": value,
+                "balance": old_balance + value,
                 "timestamp": f"{date}_{time[:8]}",
                 "description": description
             })
@@ -217,6 +218,7 @@ def putBalance():
                 "transactor": group,
                 "methods": "transfer received",
                 "value": value,
+                "balance": des_old_balance + value,
                 "timestamp": f"{date}_{time[:8]}",
                 "description": description
             })
@@ -227,6 +229,7 @@ def putBalance():
                 "transactor": group,
                 "methods": "transfer sent",
                 "value": value,
+                "balance": src_old_balance - value,
                 "timestamp": f"{date}_{time[:8]}",
                 "description": description
             })
@@ -247,7 +250,7 @@ def getStatement():
     group = decode_data['group']
 
     if group == 'admin':
-        return jsonify({'message': 'Please see full statement at admin mongo page.'}), 200
+        return jsonify({'message': 'Please see full statement at admin mongo page.'}), 403
     
     filt = {'group': group}
     group_statement = statementCollection.find(filt)
@@ -260,6 +263,7 @@ def getStatement():
             "transactor": statement['transactor'],
             "methods": statement['methods'],
             "value": statement['value'],
+            "balance": statement['balance'],
             "timestamp": statement['timestamp'],
             "description": statement['description']
         })
@@ -267,7 +271,7 @@ def getStatement():
     if output:
         return jsonify(output), 200
     else:
-        return jsonify({'message': "Your group's statement is empty."}), 200
+        return jsonify({'message': "Your group's statement is empty."}), 404
 
 
 @app.route('/warehouse', methods=['GET'])
@@ -288,5 +292,5 @@ def getWarehouse():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=3001, debug=True)
-    # app.run(host='0.0.0.0', port=3000)
+    # app.run(host='0.0.0.0', port=3001, debug=True)
+    app.run(host='0.0.0.0', port=3000)
