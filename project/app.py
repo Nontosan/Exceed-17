@@ -71,12 +71,12 @@ def home():
     login_cond, group = login_chk()
 
     now = datetime.datetime.now()
-    F6 = datetime.datetime(2021, 2, 6)
-    F7 = datetime.datetime(2021, 2, 7)
-    F13 = datetime.datetime(2021, 2, 13)
-    F14 = datetime.datetime(2021, 2, 14)
-    F20 = datetime.datetime(2021, 2, 20)
-    F21 = datetime.datetime(2021, 2, 21)
+    F6 = datetime.datetime(2021, 2, 5)
+    F7 = datetime.datetime(2021, 2, 6)
+    F13 = datetime.datetime(2021, 2, 12)
+    F14 = datetime.datetime(2021, 2, 13)
+    F20 = datetime.datetime(2021, 2, 19)
+    F21 = datetime.datetime(2021, 2, 20)
     return render_template(
         "index.html",
         F6=now >= F6,
