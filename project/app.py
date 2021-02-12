@@ -175,7 +175,11 @@ def balance():
         statement_res = requests.get(
             "http://158.108.182.0:3000/statement", headers=header
         )
+        balance_res = requests.get(
+            "http://158.108.182.0:3000/balance", headers=header
+        )
         statement = statement_res.json()
+        balance_all = balance_res.json()
         balance = [0]
         balance_str = ["0"]
         value_str = ["-"]
@@ -191,7 +195,7 @@ def balance():
             value_str = [f"{i['value']:,.0f}" for i in statement]
             date = [i["timestamp"].split("_")[0] for i in statement]
             time = [i["timestamp"].split("_")[1] for i in statement]
-            current_balance = statement[0]["balance"]
+            current_balance = balance_all["balance"]
             description = [i["description"] for i in statement]
             # for i in range(len(statement_res.json())):
                 # statement[i] = statement_res.json()[i]
