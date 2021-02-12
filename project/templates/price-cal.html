@@ -1,97 +1,173 @@
-{% extends "base.html" %}
-{% block title %}Price Cal.{% endblock %}
-{% block content_body %}
+{% extends "base.html" %} {% block title %}Price Cal.{% endblock %} {% block
+content_body %}
 
 <div class="container-fluid mt-5">
-    <div class="row">
-        <div class="col-2">
-            <div class="card-header">
-                <h4> Cart </h4>
-            </div>
-            <div>
-                <ul class="list-group list-group-flush" id="cart"></ul>
-            </div>
-        </div>
-        <div class="col-10  text-center">
-            <div class="row">
-                <div class="col-3"></div>
-                <div class="col-6">
-                    <div style="height:5vw">
-                        <h1> Total Price <span id="totalPrice" style="font-size: 4rem;"> 0 </span> </h1>
-                    </div>
-                </div>
-                <div class="col-3"><img src="../static/X-Coin.png" style="height:5vw" alt="X-Coin"></div>
-            </div>
-            <div class="row">
-                <div class="col-3">
-                    <div style="height:5vw">
-                        <h5><span id="left_value"> 0 </span></h5>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <input type="range" id="rangeInput" min="30" max="70" value="0" style="width:100%"
-                        oninput="amount.value=rangeInput.value">
-                    <span id="slider_value"> 30 </span>
-                </div>
-                <div class="col-3">
-                    <div style="height:5vw">
-                        <h5><span id="right_value"> 0 </span></h5>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                {% for i in ic %}
-                <div class="col-6 col-sm-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <img src="{{i['img_src']}}"  style="height: 10vw; width: 10vm" alt="...">
-                            <h6 class="card-title">{{i["name"]}}</h6>
-                            <h6 class="card-text">{{i["price"]}} x-coin</h6>
-                            <button id="{{i['name']}}" value="{{i['price']}}" class="btn btn-warning">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-        </div>
+  <div class="row">
+    <div class="col-2">
+      <div class="card-header">
+        <h4>Cart</h4>
+      </div>
+      <div>
+        <ul class="list-group list-group-flush" id="cart"></ul>
+      </div>
     </div>
+    <div class="col-10 text-center">
+      <div class="row">
+        <div class="col-3">
+          <img src="../static/X-Coin.png" style="height: 5vw" alt="X-Coin" />
+        </div>
+        <div class="col-6">
+          <div style="height: 5vw">
+            <h1>
+              Total Price
+              <span id="totalPrice" style="font-size: 4rem"> 0 </span>
+            </h1>
+          </div>
+        </div>
+        <div class="col-3">
+          <img src="../static/X-Coin.png" style="height: 5vw" alt="X-Coin" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-3">
+          <div style="height: 5vw">
+            <h5><span id="left_value"> 0 </span></h5>
+          </div>
+        </div>
+        <div class="col-6">
+          <input
+            type="range"
+            id="rangeInput"
+            min="30"
+            max="70"
+            value="0"
+            style="width: 100%"
+            oninput="amount.value=rangeInput.value"
+          />
+          <span id="slider_value"> 30 </span>
+        </div>
+        <div class="col-3">
+          <div style="height: 5vw">
+            <h5><span id="right_value"> 0 </span></h5>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        {% for i in ic %}
+        <div class="col-6 col-sm-3">
+          <div class="card">
+            <div class="card-body">
+              <img
+                src="{{i['img_src']}}"
+                style="height: 10vw; width: 10vm"
+                alt="..."
+              />
+              <h6 class="card-title">{{i["name"]}}</h6>
+              <h6 class="card-text">{{i["price"]}} x-coin</h6>
+              <button
+                id="{{i['name']}}"
+                value="{{i['price']}}"
+                class="btn btn-warning add_to_cart"
+              >
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
 </div>
-{% endblock %}
-{% block script %}
+{% endblock %} {% block script %}
 <script>
-    let totalPrice = 0;
-    let product = {};
-    let ic = [];
-    let state = true;
-    $("button").click(function () {
-        let item = $(this).val();
-        totalPrice += parseFloat(item.replace(/,/g, ''));
-        if ($(this).hasClass("bought")) {
-            product[$(this).attr("id")] += 1;
-            let _id = "#"+ $(this).attr("id") + "_";
-            $(_id)
-                .find('span')[0]
-                .nextSibling
-                .textContent = $(this).attr('id') + ' ×' + product[$(this).attr("id")];
-        } else {
-            $(this).addClass("bought");
-            product[$(this).attr("id")] = 1;
-            $("#cart").append(
-                '<li class="list-group-item" id="'+ $(this).attr("id") +'_"><span></span>' + $(this).attr('id') + ' ×' + product[$(this).attr("id")] + '</li>'
-            )
-        }
-        // console.log($(this).attr('id'))
-        // console.log(product)
-        $("#totalPrice").text(totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","))
-    })
+  let totalPrice = 0;
+  let product = {};
+  let ic = [];
+  let state = true;
 
-    $(document).on('input', '#rangeInput', function () {
-        let percent = $(this).val();
-        $('#slider_value').text(percent);
-        let left_value = (totalPrice * percent) / 100;
-        let right_value = (totalPrice * (100 - percent)) / 100;
-        $('#left_value').text(left_value);
-        $('#right_value').text(right_value);
-    })
+  $(".add_to_cart").click(function () {
+    let item = $(this).val();
+    totalPrice += parseFloat(item.replace(/,/g, ""));
+    if ($(this).hasClass("bought")) {
+      product[$(this).attr("id")] += 1;
+      let _id = "#" + $(this).attr("id") + "_";
+      $(_id).find("span")[0].nextSibling.textContent =
+        $(this).attr("id") + " ×" + product[$(this).attr("id")];
+    } else {
+      $(this).addClass("bought");
+      product[$(this).attr("id")] = 1;
+      $("#cart").append(
+        `<li class="list-group-item" id="${$(this).attr(
+          "id"
+        )}_"><span></span>${$(this).attr("id")} ×${
+          product[$(this).attr("id")]
+        }<button class="remove_cart btn btn-danger ms-3" onclick="remove(this);" id="${$(
+          this
+        ).attr("id")}_">x</button></li>`
+      );
+    }
+    // console.log($(this).attr('id'))
+    // console.log(product)
+    $("#totalPrice").text(
+      totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    );
+  });
+
+  function remove(el) {
+    var elem = el;
+    realId = elem.id.slice(0, -1);
+    item = $(`#${realId}`);
+    totalPrice -= parseFloat(item.val().replace(/,/g, ""));
+    product[item.attr("id")] -= 1;
+    if (product[item.attr("id")] > 0) {
+      let _id = "#" + item.attr("id") + "_";
+      $(_id).find("span")[0].nextSibling.textContent = item.attr("id") + " ×" + product[item.attr("id")];
+    } else {
+      delete product[item.attr("id")];
+      $(`li#${item.attr("id")}_`).remove();
+      $(`button#${item.attr("id")}_`).remove();
+      $(`#${item.attr("id")}.add_to_cart`).removeClass("bought");
+    }
+    $("#totalPrice").text(
+      totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    );
+    console.log("remove success");
+  }
+
+  $("remove_cart").click(function () {
+    let item = $(this).val();
+    totalPrice -= parseFloat(item.replace(/,/g, ""));
+    product[$(this).attr("id")] -= 1;
+    if (product[$(this).attr("id")] > 0) {
+      let _id = "#" + $(this).attr("id") + "_";
+      $(_id).find("span")[0].nextSibling.textContent =
+        $(this).attr("id") + " ×" + product[$(this).attr("id")];
+    } else {
+      delete product[$(this).attr("id")];
+      $(`li#${$(this).attr("id")}_`).remove();
+      $(`button#${$(this).attr("id")}_`).remove();
+      $(`#${$(this).attr("id")}.add_to_cart`).removeClass("bought");
+    }
+    console("remove success");
+    $("#totalPrice").text(
+      totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    );
+  });
+
+  $(document).on("input", "#rangeInput", function () {
+    let percent = $(this).val();
+    $("#slider_value").text(percent);
+    let left_value = (totalPrice * percent) / 100;
+    let right_value = (totalPrice * (100 - percent)) / 100;
+    $("#left_value").text(left_value);
+    $("#right_value").text(right_value);
+    $("#left_value").text(
+      left_value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    );
+    $("#right_value").text(
+      right_value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    );
+  });
 </script>
 {% endblock %}
