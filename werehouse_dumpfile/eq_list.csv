@@ -1,0 +1,49 @@
+อุปกรณ์,จำนวน,หมายเหตุ,ความจำเป็น,ราคา (บาท),ราคารวม (บาท),ร้านค้า
+Buzzer,45,,TRUE,6.80,306.00,https://th.cytron.io/p-buzzer-passive-with-jumper-housing
+LED,4,คละสี,TRUE,75.50,302.00,https://th.cytron.io/p-5mm-3mm-led-kit-box-5-colours-125pcs
+IR LED,21,,TRUE,6.04,126.84,https://th.cytron.io/p-infrared-transmitter-led-3mm
+IR Receiver,21,,TRUE,11.33,237.93,https://th.cytron.io/p-ir-receiver-diode-vs1838b-38khz
+LDR,35,,TRUE,3.02,105.70,https://th.cytron.io/p-ldr-small
+LCD,21,,TRUE,59.65,"1,252.65",https://th.cytron.io/p-i2c-1602-serial-lcd-for-arduino-and-rpi
+7-Segments,51,เดี่ยว,TRUE,11.33,577.83,https://th.cytron.io/p-7-segment-display-0.5inch-common-cathode
+OLED,5,,TRUE,188.75,943.75,https://th.cytron.io/p-oled-i2c-0.96inch-128x64-blue-display
+Soil-Moises,11,,FALSE,37.75,415.25,https://th.cytron.io/p-moisture-sensor-module
+Gyro,13,,TRUE,71.73,932.49,https://th.cytron.io/p-gy-521-mpu6050-6dof-accelerometer-plus-gyro
+Tilt Sensor,13,,TRUE,37.75,490.75,https://th.cytron.io/p-tilt-sensor-module
+Tilt Switch,13,,TRUE,98.15,"1,275.95",https://th.cytron.io/p-grove-tilt-switch
+Micro Switch,13,,TRUE,7.55,98.15,https://th.cytron.io/p-micro-switch-small-w-o-roller
+Vibration Switch,21,,TRUE,26.43,555.03,https://th.cytron.io/p-vibration-sensor-switch-high-sensitive
+Micro Servo,13,,TRUE,37.00,481.00,https://th.cytron.io/p-sg90-micro-servo
+Servo,3,,FALSE,154.78,464.34,https://th.cytron.io/p-mg995-metal-360-continuous-servo
+Motor,5,,TRUE,11.33,56.65,https://th.cytron.io/p-3v-miniature-brush-motor-with-wire-leads
+Gear Motor + Wheel,11,,TRUE,49.08,539.88,https://th.cytron.io/p-tt-motor-plus-wheel-kit
+Analog Piezoelectric Ceramic Vibration Module,35,,FALSE,52.10,"1,823.50",https://th.cytron.io/p-analog-piezoelectric-ceramic-vibration-module
+Button,85,,TRUE,3.78,321.30,https://th.cytron.io/p-6x6x1-push-button-4pin
+DHT,7,,FALSE,151.00,"1,057.00",https://th.cytron.io/p-dht22-temperature-and-humidity-sensor
+UV Sensor,3,,FALSE,350.00,"1,050.00",https://www.thaieasyelec.com/product/374/analog-uv-light-sensor-breakout-guva-s12sd
+Temp. Sensor,3,,FALSE,37.75,113.25,https://th.cytron.io/p-temperature-sensor-module
+Microphone,3,ตรวจจับได้แต่ความดัง,FALSE,37.75,113.25,https://th.cytron.io/p-mini-microphone-module
+PIR,15,,TRUE,21.90,328.50,https://th.cytron.io/p-low-cost-pir-sensor-module-hc-sr501
+Ultrasonic,3,,TRUE,124.58,373.74,https://th.cytron.io/p-grove-ultrasonic-ranger
+Water Level,3,,FALSE,61.91,185.73,https://th.cytron.io/p-water-float-or-level-sensor-switch
+Flame Sensor,7,,FALSE,37.75,264.25,https://th.cytron.io/p-flame-sensor-module
+Gas Sensor,7,,FALSE,61.91,433.37,https://th.cytron.io/p-mq5-lpg-natural-gas-sensor-module
+3D Digital Compass,3,,TRUE,151.00,453.00,https://th.cytron.io/p-3-axis-digital-compass-breakout-board
+Touch Sensor,3,,TRUE,18.88,56.64,https://th.cytron.io/p-ttp223-capacitive-touch-sensor-module
+Track Sensor,9,,TRUE,14.35,129.15,https://th.cytron.io/p-ir-line-tracking-module
+Battery,25,,TRUE,11.33,283.25,https://th.cytron.io/p-2x18650-battery-holder
+Raspi,40,,TRUE,1253.30,"50,132.00",https://th.cytron.io/p-raspberry-pi-3-model-b-plus
+Raspi Adaptor,40,ใช้ของที่มีอยู่ที่ภาคได้ครับ,TRUE,126.00,"5,040.00",https://shopee.co.th/5-V-3A-5v-3A-Raspberry-Pi-3-Model-B-Plus-Power-Supply-Charger-DC-AC-i.131758986.2051971994
+Big Bread Board,25,,TRUE,29.45,736.25,https://th.cytron.io/p-breadboard-16.5x5.5cm-830-holes
+NodeMCU ESP32,40,ใช้ของที่มีอยู่ที่ภาคได้ครับ,TRUE,218.95,"8,758.00",https://th.cytron.io/p-nodemcu-esp32
+Wire,17,,TRUE,60.40,"1,026.80",https://th.cytron.io/p-breadboard-jumper-wire-kit-140pcs
+Jumper male-male,40,,TRUE,18.88,755.20,https://th.cytron.io/p-40-ways-male-to-male-jumper-wire
+Jumper male-female,20,,TRUE,18.88,377.60,https://th.cytron.io/p-40-ways-male-to-female-jumper-wire
+Jumper female-female,20,,FALSE,18.80,376.00,https://th.cytron.io/p-40-ways-female-to-female-jumper-wire
+Resistor 10K ohm,85,ใช้แค่กับปุ่ม,TRUE,0.38,32.30,https://th.cytron.io/p-resistor-0.25w-5-10k
+Resistor 330 ohm,500,,TRUE,0.38,190.00,https://th.cytron.io/p-resistor-0.25w-5-330r
+Relay,5,,FALSE,147.23,736.15,https://th.cytron.io/p-esp01-250ac-10a-relay-module
+Joystick,9,,FALSE,37.00,333.00,https://th.cytron.io/p-2-axis-analog-and-button-ps2-joystick-module
+รวมทั้งหมด,,,,,"84,641.42",
+ตัด Raspi + ESP32,,,,,"63,930.00",
+เหลือ,,,,,"20,711.42",

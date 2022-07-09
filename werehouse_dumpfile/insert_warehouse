@@ -1,0 +1,317 @@
+db.warehouse.insertMany([
+    {
+        "sensor": "Buzzer",
+        "remain": 45,
+        "price": 680,
+        "link": "https://th.cytron.io/p-buzzer-passive-with-jumper-housing",
+        "img_src": "https://th.cytron.io/image/cache/catalog/New%20Temporary%20Product/Buzzer%20with%20Jumper%20b-800x800.jpg"
+    },
+    {
+        "sensor": "LED",
+        "remain": 4,
+        "price": 7550,
+        "link": "https://th.cytron.io/p-5mm-3mm-led-kit-box-5-colours-125pcs",
+        "img_src": "https://th.cytron.io/image/cache/catalog/products/KIT-LED-BOX/7-512x512.jpg"
+    },
+    {
+        "sensor": "IR LED",
+        "remain": 21,
+        "price": 604,
+        "link": "https://th.cytron.io/p-infrared-transmitter-led-3mm",
+        "img_src": "https://th.cytron.io/image/cache/catalog/products/SN-IR-T3/SN-IR-T3-512x512.jpg"
+    },
+    {
+        "sensor": "IR Receiver",
+        "remain": 21,
+        "price": 1133,
+        "link": "https://th.cytron.io/p-ir-receiver-diode-vs1838b-38khz",
+        "img_src": "https://th.cytron.io/image/cache/catalog/products/SN-IR-VS1838B/SN-IR-VS1838B-512x512.jpg"
+    },
+    {
+        "sensor": "LDR",
+        "remain": 35,
+        "price": 302,
+        "link": "https://th.cytron.io/p-ldr-small",
+        "img_src": "https://th.cytron.io/image/cache/catalog/products/SN-LDR-S/SN-LDR-S-b-512x512.jpg"
+    },
+    {
+        "sensor": "LCD",
+        "remain": 21,
+        "price": 5965,
+        "link": "https://th.cytron.io/p-i2c-1602-serial-lcd-for-arduino-and-rpi",
+        "img_src": "https://th.cytron.io/image/cache/catalog/products/DS-LCD-162A-I2C/DS-LCD-162A-I2C-512x512.jpg"
+    },
+    {
+        "sensor": "7-Segments",
+        "remain": 51,
+        "price": 1133,
+        "link": "https://th.cytron.io/p-7-segment-display-0.5inch-common-cathode",
+        "img_src": "https://th.cytron.io/image/cache/catalog/products/7-segment-display-0-5inch-common-cathode-1871-512x512.jpg"
+    },
+    {
+        "sensor": "OLED",
+        "remain": 5,
+        "price": 18875,
+        "link": "https://th.cytron.io/p-oled-i2c-0.96inch-128x64-blue-display",
+        "img_src": "https://th.cytron.io/image/cache/catalog/DS-OLED-MOD/DS-OLED-MOD-a-800x800.jpg"
+    },
+    {
+        "sensor": "Soil-Moises",
+        "remain": 11,
+        "price": 3775,
+        "link": "https://th.cytron.io/p-moisture-sensor-module",
+        "img_src": "https://th.cytron.io/image/cache/catalog/products/moisture-sensor-module-35035-512x512.jpg"
+    },
+    {
+        "sensor": "Gyro",
+        "remain": 13,
+        "price": 7173,
+        "link": "https://th.cytron.io/p-gy-521-mpu6050-6dof-accelerometer-plus-gyro",
+        "img_src": "https://th.cytron.io/image/cache/catalog/products/SN-MPU6050/SN-MPU6050-512x512.jpg"
+    },
+    {
+        "sensor": "Tilt Sensor",
+        "remain": 13,
+        "price": 3775,
+        "link": "https://th.cytron.io/p-tilt-sensor-module",
+        "img_src": "https://th.cytron.io/image/cache/catalog/products/SN-TILT-MOD/SN-Tilt-MOD-512x512.jpg"
+    },
+    {
+        "sensor": "Tilt Switch",
+        "remain": 13,
+        "price": 9815,
+        "link": "https://th.cytron.io/p-grove-tilt-switch",
+        "img_src": "https://th.cytron.io/image/cache/catalog/products/GRV-TILT/GRV-TILT-512x512.jpg"
+    },
+    {
+        "sensor": "Micro Switch",
+        "remain": 13,
+        "price": 755,
+        "link": "https://th.cytron.io/p-micro-switch-small-w-o-roller",
+        "img_src": "https://th.cytron.io/image/cache/catalog/products/micro-switch-small-w-o-roller-1937-512x512.jpg"
+    },
+    {
+        "sensor": "Vibration Switch",
+        "remain": 21,
+        "price": 2643,
+        "link": "https://th.cytron.io/p-vibration-sensor-switch-high-sensitive",
+        "img_src": "https://th.cytron.io/image/cache/catalog/products/vibration-sensor-switch-high-sensitive-33011-512x512.jpg"
+    },
+    {
+        "sensor": "Micro Servo",
+        "remain": 13,
+        "price": 3700,
+        "link": "https://th.cytron.io/p-sg90-micro-servo",
+        "img_src": "https://th.cytron.io/image/cache/catalog/products/SG90/SG90_2-512x512.jpg"
+    },
+    {
+        "sensor": "Servo",
+        "remain": 3,
+        "price": 15478,
+        "link": "https://th.cytron.io/p-mg995-metal-360-continuous-servo",
+        "img_src": "https://th.cytron.io/image/cache/catalog/products/MG955-360/servo-mg995-512x512.jpg"
+    },
+    {
+        "sensor": "Motor",
+        "remain": 5,
+        "price": 1133,
+        "link": "https://th.cytron.io/p-3v-miniature-brush-motor-with-wire-leads",
+        "img_src": "https://th.cytron.io/image/cache/catalog/products/MO-130SA-2270/MO-130SA-2270-512x512.jpg"
+    },
+    {
+        "sensor": "Gear Motor + Wheel",
+        "remain": 11,
+        "price": 4908,
+        "link": "https://th.cytron.io/p-tt-motor-plus-wheel-kit",
+        "img_src": "https://th.cytron.io/image/cache/catalog/products/KIT-MM-WR/KIT-MM-WR-512x512.jpg"
+    },
+    {
+        "sensor": "Analog Piezoelectric Ceramic Vibration Module",
+        "remain": 35,
+        "price": 5210,
+        "link": "https://th.cytron.io/p-analog-piezoelectric-ceramic-vibration-module",
+        "img_src": "https://th.cytron.io/image/cache/catalog/products/SN-CPIEZO-MOD/3-512x512.jpg"
+    },
+    {
+        "sensor": "Button",
+        "remain": 85,
+        "price": 378,
+        "link": "https://th.cytron.io/p-6x6x1-push-button-4pin",
+        "img_src": "https://th.cytron.io/image/cache/catalog/products/6x6x1-push-button-4pin-1917-512x512.jpg"
+    },
+    {
+        "sensor": "DHT",
+        "remain": 7,
+        "price": 15100,
+        "link": "https://th.cytron.io/p-dht22-temperature-and-humidity-sensor",
+        "img_src": "https://th.cytron.io/image/cache/catalog/products/SN-DHT22/dht22-temperature-and-humidity-sensor-a5636-512x512.jpg"
+    },
+    {
+        "sensor": "UV Sensor",
+        "remain": 3,
+        "price": 35000,
+        "link": "https://www.thaieasyelec.com/product/374/analog-uv-light-sensor-breakout-guva-s12sd",
+        "img_src": "Nan"
+    },
+    {
+        "sensor": "Temp. Sensor",
+        "remain": 3,
+        "price": 3775,
+        "link": "https://th.cytron.io/p-temperature-sensor-module",
+        "img_src": "https://th.cytron.io/image/cache/catalog/SN-TEMP-MOD/2-800x800.png"
+    },
+    {
+        "sensor": "Microphone",
+        "remain": 3,
+        "price": 3775,
+        "link": "https://th.cytron.io/p-mini-microphone-module",
+        "img_src": "https://th.cytron.io/image/cache/catalog/products/mini-microphone-module-32666-512x512.jpg"
+    },
+    {
+        "sensor": "PIR",
+        "remain": 15,
+        "price": 2190,
+        "link": "https://th.cytron.io/p-low-cost-pir-sensor-module-hc-sr501",
+        "img_src": "https://th.cytron.io/image/cache/catalog/products/SN-PIR/pir-sensor-module-2783-512x512.jpg"
+    },
+    {
+        "sensor": "Ultrasonic",
+        "remain": 3,
+        "price": 12458,
+        "link": "https://th.cytron.io/p-grove-ultrasonic-ranger",
+        "img_src": "https://th.cytron.io/image/cache/catalog/products/GRV-ULTRASONIC/GRV-ULTRASONIC1%20(2)-512x512.jpg"
+    },
+    {
+        "sensor": "Water Level",
+        "remain": 3,
+        "price": 6191,
+        "link": "https://th.cytron.io/p-water-float-or-level-sensor-switch",
+        "img_src": "https://th.cytron.io/image/cache/catalog/products/SN-WATER-FLOAT/SN-WATER-FLOAT%20(7)-512x512.jpg"
+    },
+    {
+        "sensor": "Flame Sensor",
+        "remain": 7,
+        "price": 3775,
+        "link": "https://th.cytron.io/p-flame-sensor-module",
+        "img_src": "https://th.cytron.io/image/cache/catalog/products/flame-sensor-module-32660-512x512.jpg"
+    },
+    {
+        "sensor": "Gas Sensor",
+        "remain": 7,
+        "price": 6191,
+        "link": "https://th.cytron.io/p-mq5-lpg-natural-gas-sensor-module",
+        "img_src": "https://th.cytron.io/image/cache/catalog/products/SN-MQ5-MOD/MQ5%20(2)-min-512x512.jpg"
+    },
+    {
+        "sensor": "3D Digital Compass",
+        "remain": 3,
+        "price": 15100,
+        "link": "https://th.cytron.io/p-3-axis-digital-compass-breakout-board",
+        "img_src": "https://th.cytron.io/image/cache/catalog/products/SN-HMC-5883L/SN-HMC-5883L-512x512.jpg"
+    },
+    {
+        "sensor": "Touch Sensor",
+        "remain": 3,
+        "price": 1888,
+        "link": "https://th.cytron.io/p-ttp223-capacitive-touch-sensor-module",
+        "img_src": "https://th.cytron.io/image/cache/catalog/products/SN-TTP223-MOD/SN-TTP223-MOD%20(5)-512x512.jpg"
+    },
+    {
+        "sensor": "Track Sensor",
+        "remain": 9,
+        "price": 1435,
+        "link": "https://th.cytron.io/p-ir-line-tracking-module",
+        "img_src": "https://th.cytron.io/image/cache/catalog/products/SN-IRLINE-MOD/SN-IRLINE-MOD%20(2)-512x512.jpg"
+    },
+    {
+        "sensor": "Battery",
+        "remain": 25,
+        "price": 1133,
+        "link": "https://th.cytron.io/p-2x18650-battery-holder",
+        "img_src": "https://th.cytron.io/image/cache/catalog/products/2x18650-battery-holder-27773-512x512.jpg"
+    },
+    {
+        "sensor": "Raspi",
+        "remain": 40,
+        "price": 125330,
+        "link": "https://th.cytron.io/p-raspberry-pi-3-model-b-plus",
+        "img_src": "https://th.cytron.io/image/cache/catalog/products/RASPBERRY-PI-3B+/RASPBERRY-PI-3B+(1)-512x512.png"
+    },
+    {
+        "sensor": "Raspi Adaptor",
+        "remain": 40,
+        "price": 12600,
+        "link": "https://shopee.co.th/5-V-3A-5v-3A-Raspberry-Pi-3-Model-B-Plus-Power-Supply-Charger-DC-AC-i.131758986.2051971994",
+        "img_src": "https://cf.shopee.co.th/file/63c507683ee57f0c18370bb71c5a9804"
+    },
+    {
+        "sensor": "Big Bread Board",
+        "remain": 25,
+        "price": 2945,
+        "link": "https://th.cytron.io/p-breadboard-16.5x5.5cm-830-holes",
+        "img_src": "https://th.cytron.io/image/cache/catalog/products/BD-BB-0617-R/BD-BB-0617-R%20(6)-512x512.jpg"
+    },
+    {
+        "sensor": "NodeMCU ESP32",
+        "remain": 40,
+        "price": 21895,
+        "link": "https://th.cytron.io/p-nodemcu-esp32",
+        "img_src": "https://th.cytron.io/image/cache/catalog/products/NODEMCU-ESP32/NODEMCU-ESP32-512x512.jpg"
+    },
+    {
+        "sensor": "Wire",
+        "remain": 17,
+        "price": 6040,
+        "link": "https://th.cytron.io/p-breadboard-jumper-wire-kit-140pcs",
+        "img_src": "https://th.cytron.io/image/cache/catalog/products/WR-JW-BB/3-512x512.jpg"
+    },
+    {
+        "sensor": "Jumper male-male",
+        "remain": 40,
+        "price": 1888,
+        "link": "https://th.cytron.io/p-40-ways-male-to-male-jumper-wire",
+        "img_src": "https://th.cytron.io/image/cache/catalog/products/WR-JW-40/Raspberry-Pi-3-Dupont-Line-120pcs-20cm-Male-to-Male-Male-to-Female-Female-to-Female-512x512.jpg"
+    },
+    {
+        "sensor": "Jumper male-female",
+        "remain": 20,
+        "price": 1888,
+        "link": "https://th.cytron.io/p-40-ways-male-to-female-jumper-wire",
+        "img_src": "https://th.cytron.io/image/cache/catalog/products/WR-JW-40/WR-JW-40MF-512x512.jpg"
+    },
+    {
+        "sensor": "Jumper female-female",
+        "remain": 20,
+        "price": 1880,
+        "link": "https://th.cytron.io/p-40-ways-female-to-female-jumper-wire",
+        "img_src": "https://th.cytron.io/image/cache/catalog/products/WR-JW-40/WR-JW-40FF-512x512.jpg"
+    },
+    {
+        "sensor": "Resistor 10K ohm",
+        "remain": 85,
+        "price": 38,
+        "link": "https://th.cytron.io/p-resistor-0.25w-5-10k",
+        "img_src": "https://th.cytron.io/image/cache/catalog/products/resistor-0-25w-5-10k-273-512x512.jpg"
+    },
+    {
+        "sensor": "Resistor 330 ohm",
+        "remain": 500,
+        "price": 38,
+        "link": "https://th.cytron.io/p-resistor-0.25w-5-330r",
+        "img_src": "https://th.cytron.io/image/cache/catalog/products/resistor-0-25w-5-330r-233-512x512.jpg"
+    },
+    {
+        "sensor": "Relay",
+        "remain": 5,
+        "price": 14722,
+        "link": "https://th.cytron.io/p-esp01-250ac-10a-relay-module",
+        "img_src": "https://th.cytron.io/image/cache/catalog/products/BB-ESP01-RELAY/BB-ESP01-Relay(1)-512x512.jpg"
+    },
+    {
+        "sensor": "Joystick",
+        "remain": 9,
+        "price": 3700,
+        "link": "https://th.cytron.io/p-2-axis-analog-and-button-ps2-joystick-module",
+        "img_src": "https://th.cytron.io/image/cache/catalog/products/WR-JW-MF10/WR-JW-MF10-100x100.jpg"
+    }
+])

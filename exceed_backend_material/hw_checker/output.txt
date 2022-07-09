@@ -1,0 +1,355 @@
+-------------------------------
+http://158.108.182.1
+5001
+GET Down
+POST Down
+
+5002
+GET {
+  "department": "SKE", 
+  "nickname": "Jom"
+}
+POST {
+  "result": 12
+}
+
+5003
+GET Down
+POST Down
+
+5004
+GET {
+  "department": "Ske", 
+  "name": "Ing"
+}
+POST {
+  "result": 12.0
+}
+
+5005
+GET {
+  "department": "CPE", 
+  "nickname": "Mark"
+}
+POST {
+  "result": 12
+}
+
+-------------------------------
+http://158.108.182.3
+5001
+GET Down
+POST Down
+
+5002
+GET Manual
+POST Manual
+
+5003
+GET {
+  "department": "CPE", 
+  "nickname": "Preaw"
+}
+POST {
+  "result": 12
+}
+
+5004
+GET Down
+POST Down
+
+5005
+GET {
+  "department": "CPE", 
+  "nickname": "Soft"
+}
+POST {
+  "result": 12
+}
+
+-------------------------------
+http://158.108.182.14
+5001
+GET {
+  "department": "SKE", 
+  "nickname": "Boom"
+}
+POST {
+  "result": 12
+}
+
+5002
+GET {
+  "department": "CPE", 
+  "nickname": "James"
+}
+POST Manual
+
+5003
+GET {
+  "department": "CPE", 
+  "nickname": "NongNon"
+}
+POST {
+  "Result": 12
+}
+
+5004
+GET {
+  "name": "Kongtapp Veerawattananun, 6210546374"
+}
+POST {
+  "result": 12
+}
+
+5005
+GET Down
+POST Down
+
+-------------------------------
+http://158.108.182.17
+5001
+GET {
+  "department": "CPE", 
+  "nickname": "Belle"
+}
+POST {
+  "result": 12
+}
+
+5002
+GET Manual
+POST Manual
+
+5003
+GET Down
+POST Down
+
+5004
+GET {
+  "department": "CPE", 
+  "nickname": "PonPond"
+}
+POST {
+  "result": 12
+}
+
+5005
+GET Down
+POST Down
+
+-------------------------------
+http://158.108.182.26
+5001
+GET {
+  "department": "CPE", 
+  "nickname": "Class"
+}
+POST {
+  "result": 12
+}
+
+5002
+GET {
+  "department": "SKE", 
+  "nickname": "NJames"
+}
+POST {
+  "result": 12
+}
+
+5003
+GET {
+  "department": "CPE", 
+  "nickname": "Nope"
+}
+POST {
+  "result": 12
+}
+
+5004
+GET {
+  "department": "CPE", 
+  "nickname": "yo"
+}
+POST {
+  "result": 12
+}
+
+5005
+GET Down
+POST Down
+
+-------------------------------
+http://158.108.182.28
+5001
+GET Down
+POST Down
+
+5002
+GET Down
+POST Down
+
+5003
+GET Down
+POST Down
+
+5004
+GET Down
+POST Down
+
+5005
+GET Down
+POST Down
+
+-------------------------------
+http://158.108.182.30
+5001
+GET {
+  "department": "CPE", 
+  "nickname": "BAS"
+}
+POST {
+  "result": 12
+}
+
+5002
+GET {
+  "department": "CPE", 
+  "nickname": "ICE"
+}
+POST {
+  "result": 12
+}
+
+5003
+GET {
+  "department": "SKE", 
+  "nickname": "mark"
+}
+POST {
+  "result": 12
+}
+
+5004
+GET {
+  "department": "SKE", 
+  "nickname": "Ploy"
+}
+POST {
+  "result": 12
+}
+
+5005
+GET Manual
+POST Manual
+
+-------------------------------
+http://158.108.182.32
+5001
+GET Manual
+POST Manual
+
+5002
+GET {
+  "department": "CPE", 
+  "nickname": "Icezy"
+}
+POST {
+  "result": 12
+}
+
+5003
+GET {
+  "department": "SKE", 
+  "nickname": "May"
+}
+POST {
+  "result": 12
+}
+
+5004
+GET {
+  "department": "SKE", 
+  "name": "Ploy"
+}
+POST Manual
+
+5005
+GET Down
+POST Down
+
+-------------------------------
+http://158.108.182.38
+5001
+GET Manual
+POST Manual
+
+5002
+GET {
+  "department": "CPE", 
+  "nickname": "Fay"
+}
+POST {
+  "result": 12
+}
+
+5003
+GET {
+  "department": "CPE", 
+  "nickname": "Knun"
+}
+POST {
+  "result": 12
+}
+
+5004
+GET Down
+POST Down
+
+5005
+GET Down
+POST Down
+
+-------------------------------
+http://158.108.182.41
+5001
+GET {
+  "department": "CPE", 
+  "nickname": "Eak"
+}
+POST {
+  "result": 12
+}
+
+5002
+GET {
+  "department": "CPE", 
+  "nickname": "Kak"
+}
+POST {
+  "result": 12
+}
+
+5003
+GET {
+  "department": "SKE", 
+  "nickname": "Peem"
+}
+POST {
+  "result": 12
+}
+
+5004
+GET {
+  "department": "Ske", 
+  "nickname": "Sabai"
+}
+POST {
+  "result": 12
+}
+
+5005
+GET Manual
+POST Manual
+
